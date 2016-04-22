@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE KMYMONEY-FILE>
+<KMYMONEY-FILE>
+ <FILEINFO>
+  <CREATION_DATE date="2016-04-12"/>
+  <LAST_MODIFIED_DATE date="2016-04-19"/>
+  <VERSION id="1"/>
+  <FIXVERSION id="4"/>
+ </FILEINFO>
+ <USER email="" name="Fabrice BELLINGARD">
+  <ADDRESS street="" telephone="" county="" city="" zipcode=""/>
+ </USER>
+ <INSTITUTIONS count="1">
+  <INSTITUTION manager="" id="I000001" name="CreditAgricole" sortcode="">
+   <ADDRESS street="" telephone="" zip="" city=""/>
+   <ACCOUNTIDS>
+    <ACCOUNTID id="A000001"/>
+    <ACCOUNTID id="A000003"/>
+   </ACCOUNTIDS>
+  </INSTITUTION>
+ </INSTITUTIONS>
+ <PAYEES count="3">
+  <PAYEE matchingenabled="0" email="" id="P000001" name="Auchan" reference="">
+   <ADDRESS street="" postcode="" telephone="" city="" state=""/>
+  </PAYEE>
+  <PAYEE matchingenabled="0" email="" id="P000002" name="JeanPierre" reference="">
+   <ADDRESS street="" postcode="" telephone="" city="" state=""/>
+  </PAYEE>
+  <PAYEE matchingenabled="0" email="" id="P000003" name="SonarSource" reference="">
+   <ADDRESS street="" postcode="" telephone="" city="" state=""/>
+  </PAYEE>
+ </PAYEES>
+ <ACCOUNTS count="11">
+  <ACCOUNT currency="EUR" description="" parentaccount="" opened="" number="" lastmodified="" type="9" id="AStd::Asset" lastreconciled="" institution="" name="Asset">
+   <SUBACCOUNTS>
+    <SUBACCOUNT id="A000001"/>
+    <SUBACCOUNT id="A000003"/>
+   </SUBACCOUNTS>
+   <KEYVALUEPAIRS>
+    <PAIR key="lastStatementDate" value=""/>
+   </KEYVALUEPAIRS>
+  </ACCOUNT>
+  <ACCOUNT currency="EUR" description="" parentaccount="" opened="" number="" lastmodified="" type="10" id="AStd::Liability" lastreconciled="" institution="" name="Liability">
+   <KEYVALUEPAIRS>
+    <PAIR key="lastStatementDate" value=""/>
+   </KEYVALUEPAIRS>
+  </ACCOUNT>
+  <ACCOUNT currency="EUR" description="" parentaccount="" opened="" number="" lastmodified="" type="13" id="AStd::Expense" lastreconciled="" institution="" name="Expense">
+   <SUBACCOUNTS>
+    <SUBACCOUNT id="A000004"/>
+   </SUBACCOUNTS>
+   <KEYVALUEPAIRS>
+    <PAIR key="lastStatementDate" value=""/>
+   </KEYVALUEPAIRS>
+  </ACCOUNT>
+  <ACCOUNT currency="EUR" description="" parentaccount="" opened="" number="" lastmodified="" type="12" id="AStd::Income" lastreconciled="" institution="" name="Income">
+   <SUBACCOUNTS>
+    <SUBACCOUNT id="A000005"/>
+    <SUBACCOUNT id="A000006"/>
+   </SUBACCOUNTS>
+   <KEYVALUEPAIRS>
+    <PAIR key="lastStatementDate" value=""/>
+   </KEYVALUEPAIRS>
+  </ACCOUNT>
+  <ACCOUNT currency="EUR" description="" parentaccount="" opened="" number="" lastmodified="" type="16" id="AStd::Equity" lastreconciled="" institution="" name="Equity">
+   <SUBACCOUNTS>
+    <SUBACCOUNT id="A000002"/>
+   </SUBACCOUNTS>
+   <KEYVALUEPAIRS>
+    <PAIR key="lastStatementDate" value=""/>
+   </KEYVALUEPAIRS>
+  </ACCOUNT>
+  <ACCOUNT currency="EUR" description="" parentaccount="AStd::Asset" opened="2010-01-01" number="NumeroDeCompte" lastmodified="2016-04-19" type="1" id="A000001" lastreconciled="" institution="I000001" name="NomDuCompte">
+   <KEYVALUEPAIRS>
+    <PAIR key="PreferredAccount" value="Yes"/>
+    <PAIR key="lastNumberUsed" value="3"/>
+    <PAIR key="lastStatementDate" value=""/>
+   </KEYVALUEPAIRS>
+  </ACCOUNT>
+  <ACCOUNT currency="EUR" description="" parentaccount="AStd::Equity" opened="2010-01-01" number="" lastmodified="2016-04-15" type="16" id="A000002" lastreconciled="" institution="" name="Opening Balances">
+   <KEYVALUEPAIRS>
+    <PAIR key="lastStatementDate" value=""/>
+   </KEYVALUEPAIRS>
+  </ACCOUNT>
+  <ACCOUNT currency="EUR" description="" parentaccount="AStd::Asset" opened="2011-01-01" number="CompteLivretA" lastmodified="2016-04-12" type="2" id="A000003" lastreconciled="" institution="I000001" name="LivretA">
+   <KEYVALUEPAIRS>
+    <PAIR key="IBAN" value="IBANduComteLivretA"/>
+    <PAIR key="PreferredAccount" value="Yes"/>
+    <PAIR key="lastStatementDate" value=""/>
+   </KEYVALUEPAIRS>
+  </ACCOUNT>
+  <ACCOUNT currency="EUR" description="" parentaccount="AStd::Expense" opened="2016-04-12" number="" lastmodified="2016-04-12" type="13" id="A000004" lastreconciled="" institution="" name="Alimentation">
+   <KEYVALUEPAIRS>
+    <PAIR key="lastStatementDate" value=""/>
+   </KEYVALUEPAIRS>
+  </ACCOUNT>
+  <ACCOUNT currency="EUR" description="" parentaccount="AStd::Income" opened="2016-04-12" number="" lastmodified="2016-04-12" type="12" id="A000005" lastreconciled="" institution="" name="Cadeau">
+   <KEYVALUEPAIRS>
+    <PAIR key="lastStatementDate" value=""/>
+   </KEYVALUEPAIRS>
+  </ACCOUNT>
+  <ACCOUNT currency="EUR" description="" parentaccount="AStd::Income" opened="2016-04-12" number="" lastmodified="2016-04-19" type="12" id="A000006" lastreconciled="" institution="" name="Salaire">
+   <KEYVALUEPAIRS>
+    <PAIR key="lastStatementDate" value=""/>
+   </KEYVALUEPAIRS>
+  </ACCOUNT>
+ </ACCOUNTS>
+ <TRANSACTIONS count="5">
+  <TRANSACTION postdate="2010-01-01" commodity="EUR" memo="" id="T000000000000000001" entrydate="2016-04-12">
+   <SPLITS>
+    <SPLIT payee="" reconcileflag="0" shares="1234/1" reconciledate="" action="" bankid="" account="A000001" number="" value="1234/1" memo="" id="S0001"/>
+    <SPLIT payee="" reconcileflag="0" shares="-1234/1" reconciledate="" action="" bankid="" account="A000002" number="" value="-1234/1" memo="" id="S0002"/>
+   </SPLITS>
+  </TRANSACTION>
+  <TRANSACTION postdate="2011-01-01" commodity="EUR" memo="" id="T000000000000000002" entrydate="2016-04-12">
+   <SPLITS>
+    <SPLIT payee="" reconcileflag="0" shares="9876/1" reconciledate="" action="" bankid="" account="A000003" number="" value="9876/1" memo="" id="S0001"/>
+    <SPLIT payee="" reconcileflag="0" shares="-9876/1" reconciledate="" action="" bankid="" account="A000002" number="" value="-9876/1" memo="" id="S0002"/>
+   </SPLITS>
+  </TRANSACTION>
+  <TRANSACTION postdate="2016-04-12" commodity="EUR" memo="" id="T000000000000000003" entrydate="2016-04-12">
+   <SPLITS>
+    <SPLIT payee="P000001" reconcileflag="0" shares="-56/1" reconciledate="" action="" bankid="" account="A000001" number="1" value="-56/1" memo="" id="S0001"/>
+    <SPLIT payee="P000001" reconcileflag="0" shares="56/1" reconciledate="" action="" bankid="" account="A000004" number="" value="56/1" memo="" id="S0002"/>
+   </SPLITS>
+  </TRANSACTION>
+  <TRANSACTION postdate="2016-04-12" commodity="EUR" memo="" id="T000000000000000004" entrydate="2016-04-12">
+   <SPLITS>
+    <SPLIT payee="P000002" reconcileflag="0" shares="765/1" reconciledate="" action="" bankid="" account="A000001" number="2" value="765/1" memo="" id="S0001"/>
+    <SPLIT payee="P000002" reconcileflag="0" shares="-765/1" reconciledate="" action="" bankid="" account="A000005" number="" value="-765/1" memo="" id="S0002"/>
+   </SPLITS>
+  </TRANSACTION>
+  <TRANSACTION postdate="2016-04-19" commodity="EUR" memo="" id="T000000000000000005" entrydate="2016-04-19">
+   <SPLITS>
+    <SPLIT payee="P000003" reconcileflag="0" shares="111614/25" reconciledate="" action="" bankid="" account="A000001" number="3" value="111614/25" memo="" id="S0001"/>
+    <SPLIT payee="P000003" reconcileflag="0" shares="-111614/25" reconciledate="" action="" bankid="" account="A000006" number="" value="-111614/25" memo="" id="S0002"/>
+   </SPLITS>
+  </TRANSACTION>
+ </TRANSACTIONS>
+ <KEYVALUEPAIRS>
+  <PAIR key="kmm-baseCurrency" value="EUR"/>
+  <PAIR key="kmm-id" value="{2d479ed7-a1b1-48e9-86c4-915da86b880e}"/>
+ </KEYVALUEPAIRS>
+ <SCHEDULES count="2">
+  <SCHEDULED_TX paymentType="8" autoEnter="0" occurenceMultiplier="4" startDate="2016-07-12" lastPayment="" occurence="32" weekendOption="2" type="1" id="SCH000001" name="Impots" endDate="" fixed="0">
+   <PAYMENTS/>
+   <TRANSACTION postdate="2016-07-12" commodity="EUR" memo="" id="" entrydate="">
+    <SPLITS>
+     <SPLIT payee="P000001" reconcileflag="0" shares="-7777/1" reconciledate="" action="" bankid="" account="A000001" number="3" value="-7777/1" memo="" id="S0001"/>
+     <SPLIT payee="" reconcileflag="0" shares="7777/1" reconciledate="" action="" bankid="" account="A000004" number="" value="7777/1" memo="" id="S0002"/>
+    </SPLITS>
+   </TRANSACTION>
+  </SCHEDULED_TX>
+  <SCHEDULED_TX paymentType="8" autoEnter="0" occurenceMultiplier="1" startDate="2016-04-30" lastPayment="" occurence="32" weekendOption="2" type="2" id="SCH000002" name="" endDate="" fixed="0">
+   <PAYMENTS/>
+   <TRANSACTION postdate="2016-04-30" commodity="EUR" memo="" id="" entrydate="">
+    <SPLITS>
+     <SPLIT payee="P000003" reconcileflag="0" shares="4400/1" reconciledate="" action="" bankid="" account="A000001" number="" value="4400/1" memo="" id="S0001"/>
+     <SPLIT payee="" reconcileflag="0" shares="-4400/1" reconciledate="" action="" bankid="" account="A000006" number="" value="-4400/1" memo="" id="S0002"/>
+    </SPLITS>
+   </TRANSACTION>
+  </SCHEDULED_TX>
+ </SCHEDULES>
+ <SECURITIES count="0"/>
+ <CURRENCIES count="185">
+  <CURRENCY saf="100" symbol="ADF" type="3" id="ADF" name="Andorran Franc" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="ADP" type="3" id="ADP" name="Andorran Peseta" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="AED" type="3" id="AED" name="United Arab Emirates Dirham" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="AFA" type="3" id="AFA" name="Afghanistan Afghani" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="ALL" type="3" id="ALL" name="Albanian Lek" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="ANG" type="3" id="ANG" name="Netherland Antillian Guilder" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="AON" type="3" id="AON" name="Angolan New Kwanza" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="ARS" name="Argentine Peso" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="ÃS" type="3" id="ATS" name="Austrian Schilling" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="AUD" name="Australian Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="AWG" type="3" id="AWG" name="Aruban Florin" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="m." type="3" id="AZM" name="Azerbaijani Manat" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="m." type="3" id="AZN" name="Azerbaijani Manat" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="BAM" type="3" id="BAM" name="Bosnian Convertible Mark" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="BBD" name="Barbados Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="BDT" type="3" id="BDT" name="Bangladeshi Taka" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="Fr" type="3" id="BEF" name="Belgian Franc" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="BGL" type="3" id="BGL" name="Bulgarian Lev" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="BGN" type="3" id="BGN" name="Bulgarian Lev (new)" ppu="100" scf="100"/>
+  <CURRENCY saf="1000" symbol="BHD" type="3" id="BHD" name="Bahraini Dinar" ppu="1000" scf="1000"/>
+  <CURRENCY saf="100" symbol="BIF" type="3" id="BIF" name="Burundi Franc" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="BMD" name="Bermudian Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="BND" name="Brunei Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="BOB" type="3" id="BOB" name="Bolivian Boliviano" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="R$" type="3" id="BRL" name="Brazilian Real" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="BSD" name="Bahamian Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="BTN" type="3" id="BTN" name="Bhutan Ngultrum" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="BWP" type="3" id="BWP" name="Botswana Pula" ppu="100" scf="100"/>
+  <CURRENCY saf="1" symbol="BYR" type="3" id="BYR" name="Belarusian Ruble" ppu="1" scf="1"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="BZD" name="Belize Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="CAD" name="Canadian Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="SFr" type="3" id="CHF" name="Swiss Franc" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="CLP" type="3" id="CLP" name="Chilean Peso" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="CNY" type="3" id="CNY" name="Chinese Yuan Renminbi" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="COP" type="3" id="COP" name="Colombian Peso" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="₡" type="3" id="CRC" name="Costa Rican Colon" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="CUP" type="3" id="CUP" name="Cuban Peso" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="CVE" type="3" id="CVE" name="Cape Verde Escudo" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="C£" type="3" id="CYP" name="Cyprus Pound" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="CZK" type="3" id="CZK" name="Czech Koruna" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="DM" type="3" id="DEM" name="German Mark" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="DJF" type="3" id="DJF" name="Djibouti Franc" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="kr" type="3" id="DKK" name="Danish Krone" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="DOP" type="3" id="DOP" name="Dominican Peso" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="DZD" type="3" id="DZD" name="Algerian Dinar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="EEK" type="3" id="EEK" name="Estonian Kroon" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="£" type="3" id="EGP" name="Egyptian Pound" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="ERN" type="3" id="ERN" name="Eritrean Nakfa" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="ESP" type="3" id="ESP" name="Spanish Peseta" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="ETB" type="3" id="ETB" name="Ethiopian Birr" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="€" type="3" id="EUR" name="Euro" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="FIM" type="3" id="FIM" name="Finnish Markka" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="FJD" name="Fiji Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="£" type="3" id="FKP" name="Falkland Islands Pound" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="FF" type="3" id="FRF" name="French Franc" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="£" type="3" id="GBP" name="British Pound" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="GEL" type="3" id="GEL" name="Georgian Lari" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="GHC" type="3" id="GHC" name="Ghanaian Cedi" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="£" type="3" id="GIP" name="Gibraltar Pound" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="GMD" type="3" id="GMD" name="Gambian Dalasi" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="₯" type="3" id="GRD" name="Greek Drachma" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="GTQ" type="3" id="GTQ" name="Guatemalan Quetzal" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="GWP" type="3" id="GWP" name="Guinea-Bissau Peso" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="GYD" name="Guyanan Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="HKD" name="Hong Kong Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="HNL" type="3" id="HNL" name="Honduran Lempira" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="HRK" type="3" id="HRK" name="Croatian Kuna" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="HTG" type="3" id="HTG" name="Haitian Gourde" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="HUF" type="3" id="HUF" name="Hungarian Forint" ppu="1" scf="1"/>
+  <CURRENCY saf="1" symbol="IDR" type="3" id="IDR" name="Indonesian Rupiah" ppu="100" scf="1"/>
+  <CURRENCY saf="100" symbol="£" type="3" id="IEP" name="Irish Pound" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="₪" type="3" id="ILS" name="Israeli New Shekel" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="₨" type="3" id="INR" name="Indian Rupee" ppu="100" scf="100"/>
+  <CURRENCY saf="1000" symbol="IQD" type="3" id="IQD" name="Iraqi Dinar" ppu="1000" scf="1000"/>
+  <CURRENCY saf="1" symbol="IRR" type="3" id="IRR" name="Iranian Rial" ppu="1" scf="1"/>
+  <CURRENCY saf="100" symbol="ISK" type="3" id="ISK" name="Iceland Krona" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="₤" type="3" id="ITL" name="Italian Lira" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="JMD" name="Jamaican Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="1000" symbol="JOD" type="3" id="JOD" name="Jordanian Dinar" ppu="1000" scf="1000"/>
+  <CURRENCY saf="1" symbol="¥" type="3" id="JPY" name="Japanese Yen" ppu="100" scf="1"/>
+  <CURRENCY saf="100" symbol="KES" type="3" id="KES" name="Kenyan Shilling" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="KGS" type="3" id="KGS" name="Kyrgyzstan Som" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="KHR" type="3" id="KHR" name="Cambodia Riel" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="KMF" type="3" id="KMF" name="Comoros Franc" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="₩" type="3" id="KPW" name="North Korean Won" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="₩" type="3" id="KRW" name="South Korean Won" ppu="100" scf="100"/>
+  <CURRENCY saf="1000" symbol="KWD" type="3" id="KWD" name="Kuwaiti Dinar" ppu="1000" scf="1000"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="KYD" name="Cayman Islands Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="KZT" type="3" id="KZT" name="Kazakhstan Tenge" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="₭" type="3" id="LAK" name="Laos Kip" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="£" type="3" id="LBP" name="Lebanese Pound" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="LKR" type="3" id="LKR" name="Sri Lanka Rupee" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="LRD" name="Liberian Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="LSL" type="3" id="LSL" name="Lesotho Loti" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="LTL" type="3" id="LTL" name="Lithuanian Litas" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="Fr" type="3" id="LUF" name="Luxembourg Franc" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="LVL" type="3" id="LVL" name="Latvian Lats" ppu="100" scf="100"/>
+  <CURRENCY saf="1000" symbol="LYD" type="3" id="LYD" name="Libyan Dinar" ppu="1000" scf="1000"/>
+  <CURRENCY saf="100" symbol="MAD" type="3" id="MAD" name="Moroccan Dirham" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="MDL" type="3" id="MDL" name="Moldavian Leu" ppu="100" scf="100"/>
+  <CURRENCY saf="500" symbol="MGF" type="3" id="MGF" name="Malagasy Franc" ppu="500" scf="500"/>
+  <CURRENCY saf="100" symbol="MKD" type="3" id="MKD" name="Macedonian Denar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="MLF" type="3" id="MLF" name="Mali Republic Franc" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="MMK" type="3" id="MMK" name="Myanmar Kyat" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="₮" type="3" id="MNT" name="Mongolian Tugrik" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="MOP" type="3" id="MOP" name="Macau Pataca" ppu="100" scf="100"/>
+  <CURRENCY saf="5" symbol="MRO" type="3" id="MRO" name="Mauritanian Ouguiya" ppu="5" scf="5"/>
+  <CURRENCY saf="100" symbol="MTL" type="3" id="MTL" name="Maltese Lira" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="MUR" type="3" id="MUR" name="Mauritius Rupee" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="MVR" type="3" id="MVR" name="Maldive Rufiyaa" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="MWK" type="3" id="MWK" name="Malawi Kwacha" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="MXN" name="Mexican Peso" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="MYR" type="3" id="MYR" name="Malaysian Ringgit" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="MT" type="3" id="MZM" name="Mozambique Metical" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="MT" type="3" id="MZN" name="Mozambique Metical" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="NAD" name="Namibian Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="₦" type="3" id="NGN" name="Nigerian Naira" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="NIC" type="3" id="NIC" name="Nicaraguan Cordoba Oro" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="NLG" type="3" id="NLG" name="Dutch Guilder" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="kr" type="3" id="NOK" name="Norwegian Kroner" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="NPR" type="3" id="NPR" name="Nepalese Rupee" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="NZD" name="New Zealand Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="1000" symbol="OMR" type="3" id="OMR" name="Omani Rial" ppu="1000" scf="1000"/>
+  <CURRENCY saf="100" symbol="PAB" type="3" id="PAB" name="Panamanian Balboa" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="PEN" type="3" id="PEN" name="Peruvian Nuevo Sol" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="PGK" type="3" id="PGK" name="Papua New Guinea Kina" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="₱" type="3" id="PHP" name="Philippine Peso" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="PKR" type="3" id="PKR" name="Pakistan Rupee" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="PLN" type="3" id="PLN" name="Polish Zloty" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="PTE" type="3" id="PTE" name="Portuguese Escudo" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="PYG" type="3" id="PYG" name="Paraguay Guarani" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="QAR" type="3" id="QAR" name="Qatari Rial" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="ROL" type="3" id="ROL" name="Romanian Leu" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="RON" type="3" id="RON" name="Romanian Leu (new)" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="RSD" type="3" id="RSD" name="Serbian Dinar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="RUB" type="3" id="RUB" name="Russian Ruble" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="RUR" type="3" id="RUR" name="Russian Ruble (old)" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="RWF" type="3" id="RWF" name="Rwanda Franc" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="SAR" type="3" id="SAR" name="Saudi Riyal" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="SBD" name="Solomon Islands Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="SCR" type="3" id="SCR" name="Seychelles Rupee" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="SDD" type="3" id="SDD" name="Sudanese Dinar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="SEK" type="3" id="SEK" name="Swedish Krona" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="SGD" name="Singapore Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="£" type="3" id="SHP" name="St. Helena Pound" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="SIT" type="3" id="SIT" name="Slovenian Tolar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="SKK" type="3" id="SKK" name="Slovak Koruna" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="SLL" type="3" id="SLL" name="Sierra Leone Leone" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="SOS" type="3" id="SOS" name="Somali Shilling" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="SRG" type="3" id="SRG" name="Suriname Guilder" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="STD" type="3" id="STD" name="Sao Tome and Principe Dobra" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="SVC" type="3" id="SVC" name="El Salvador Colon" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="£" type="3" id="SYP" name="Syrian Pound" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="SZL" type="3" id="SZL" name="Swaziland Lilangeni" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="฿" type="3" id="THB" name="Thai Baht" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="TJS" type="3" id="TJS" name="Tajikistan Somani" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="TMM" type="3" id="TMM" name="Turkmenistan Manat" ppu="100" scf="100"/>
+  <CURRENCY saf="1000" symbol="TND" type="3" id="TND" name="Tunisian Dinar" ppu="1000" scf="1000"/>
+  <CURRENCY saf="100" symbol="TOP" type="3" id="TOP" name="Tongan Pa'anga" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="TL" type="3" id="TRL" name="Turkish Lira" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="YTL" type="3" id="TRY" name="Turkish Lira (new)" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="TTD" name="Trinidad and Tobago Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="TWD" name="Taiwan Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="TZS" type="3" id="TZS" name="Tanzanian Shilling" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="UAH" type="3" id="UAH" name="Ukraine Hryvnia" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="UGX" type="3" id="UGX" name="Uganda Shilling" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="USD" name="US Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="UYU" type="3" id="UYU" name="Uruguayan Peso" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="UZS" type="3" id="UZS" name="Uzbekistani Sum" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="VEB" type="3" id="VEB" name="Venezuelan Bolivar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="₫" type="3" id="VND" name="Vietnamese Dong" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="VUV" type="3" id="VUV" name="Vanuatu Vatu" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="WST" type="3" id="WST" name="Samoan Tala" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="XAF" type="3" id="XAF" name="CFA Franc BEAC" ppu="100" scf="100"/>
+  <CURRENCY saf="1000000" symbol="XAG" type="3" id="XAG" name="Silver" ppu="1" scf="1000000"/>
+  <CURRENCY saf="1000000" symbol="XAU" type="3" id="XAU" name="Gold" ppu="1" scf="1000000"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="XCD" name="East Caribbean Dollar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="XOF" type="3" id="XOF" name="CFA Franc BCEAO" ppu="100" scf="100"/>
+  <CURRENCY saf="1000000" symbol="XPD" type="3" id="XPD" name="Palladium" ppu="1" scf="1000000"/>
+  <CURRENCY saf="100" symbol="F" type="3" id="XPF" name="CFP Franc Pacifique" ppu="1" scf="1"/>
+  <CURRENCY saf="1000000" symbol="XPT" type="3" id="XPT" name="Platinum" ppu="1" scf="1000000"/>
+  <CURRENCY saf="100" symbol="YUM" type="3" id="YUM" name="Yugoslav Dinar" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="ZAR" type="3" id="ZAR" name="South African Rand" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="ZMK" type="3" id="ZMK" name="Zambian Kwacha" ppu="100" scf="100"/>
+  <CURRENCY saf="100" symbol="$" type="3" id="ZWD" name="Zimbabwe Dollar" ppu="100" scf="100"/>
+ </CURRENCIES>
+ <PRICES count="22">
+  <PRICEPAIR from="ATS" to="EUR">
+   <PRICE price="10000/137603" source="KMyMoney" date="1998-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="AZM" to="AZN">
+   <PRICE price="1/5000" source="KMyMoney" date="2006-01-01"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="BEF" to="EUR">
+   <PRICE price="10000/403399" source="KMyMoney" date="1998-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="BGL" to="BGN">
+   <PRICE price="1/1000" source="KMyMoney" date="1999-07-05"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="CYP" to="EUR">
+   <PRICE price="292637/500000" source="KMyMoney" date="2008-01-01"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="DEM" to="EUR">
+   <PRICE price="100000/195583" source="KMyMoney" date="1998-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="ESP" to="EUR">
+   <PRICE price="500/83193" source="KMyMoney" date="1998-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="FIM" to="EUR">
+   <PRICE price="100000/594573" source="KMyMoney" date="1998-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="FRF" to="EUR">
+   <PRICE price="100000/655957" source="KMyMoney" date="1998-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="GRD" to="EUR">
+   <PRICE price="4/1363" source="KMyMoney" date="1998-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="IEP" to="EUR">
+   <PRICE price="250000/196891" source="KMyMoney" date="1998-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="ITL" to="EUR">
+   <PRICE price="100/193627" source="KMyMoney" date="1998-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="LUF" to="EUR">
+   <PRICE price="10000/403399" source="KMyMoney" date="1998-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="MTL" to="EUR">
+   <PRICE price="4293/10000" source="KMyMoney" date="2008-01-01"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="MZM" to="MZN">
+   <PRICE price="1/1000" source="KMyMoney" date="2006-07-01"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="NLG" to="EUR">
+   <PRICE price="100000/220371" source="KMyMoney" date="1998-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="PTE" to="EUR">
+   <PRICE price="500/100241" source="KMyMoney" date="1998-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="ROL" to="RON">
+   <PRICE price="1/10000" source="KMyMoney" date="2005-06-30"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="RUR" to="RUB">
+   <PRICE price="1/1000" source="KMyMoney" date="1998-01-01"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="SIT" to="EUR">
+   <PRICE price="25/5991" source="KMyMoney" date="2006-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="SKK" to="EUR">
+   <PRICE price="500/15063" source="KMyMoney" date="2008-12-31"/>
+  </PRICEPAIR>
+  <PRICEPAIR from="TRL" to="TRY">
+   <PRICE price="1/1000000" source="KMyMoney" date="2004-12-31"/>
+  </PRICEPAIR>
+ </PRICES>
+ <REPORTS count="0"/>
+ <BUDGETS count="0"/>
+</KMYMONEY-FILE>
