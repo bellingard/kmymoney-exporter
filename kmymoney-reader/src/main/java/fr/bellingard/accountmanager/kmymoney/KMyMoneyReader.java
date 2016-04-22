@@ -14,7 +14,9 @@ import javax.xml.xpath.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.zip.GZIPInputStream;
 
 /**
@@ -122,25 +124,28 @@ public class KMyMoneyReader {
 
             String id = transactionElement.getAttribute("id");
             String date = transactionElement.getAttribute("postdate");
-            Payee payee = null;
-            Account bankAccount = null;
-            Account category = null;
+            Account fromAccount = null;
+            Account toAccount = null;
             Float amount = null;
+            Payee payee = null;
             String description = null;
 
-            Collection<Element> splits = extractSplits(transactionElement);
-            for (Element splitElement : splits) {
-                payee = repository.findPayee(splitElement.getAttribute("payee")).orElse(null);
-                bankAccount = repository.findBankAccount(splitElement.getAttribute("account")).orElse(bankAccount);
-                if (amount == null && bankAccount != null) {
-                    amount = convert(splitElement.getAttribute("shares"));
-                }
-                category = repository.findCategory(splitElement.getAttribute("account")).orElse(category);
-                description = splitElement.getAttribute("memo").trim();
+            Element[] splits = extractSplits(transactionElement);
+
+            Element firstElement = splits[0];
+            payee = repository.findPayee(firstElement.getAttribute("payee")).orElse(null);
+            fromAccount = repository.findBankAccount(firstElement.getAttribute("account")).orElse(null);
+            amount = convert(firstElement.getAttribute("shares"));
+            description = firstElement.getAttribute("memo").trim();
+
+            Element secondElement = splits[1];
+            toAccount = repository.findCategory(secondElement.getAttribute("account")).orElse(null);
+            if (toAccount == null) {
+                // this is a transfer between 2 back accounts
+                toAccount = repository.findBankAccount(secondElement.getAttribute("account")).orElse(null);
             }
 
-            Transaction transaction = new Transaction(id, bankAccount, date, amount);
-            transaction.setCategory(category);
+            Transaction transaction = new Transaction(id, fromAccount, toAccount, date, amount);
             transaction.setPayee(payee);
             transaction.setDescription(description);
             System.out.println(transaction);
@@ -148,13 +153,15 @@ public class KMyMoneyReader {
 
     }
 
-    private Collection<Element> extractSplits(Element transactionElement) {
-        Collection<Element> splits = new ArrayList<>();
+    private Element[] extractSplits(Element transactionElement) {
+        // There are only 2 splits
+        Element[] splits = new Element[2];
+        int index = 0;
         NodeList splitsChildren = transactionElement.getChildNodes().item(1).getChildNodes();
         for (int j = 0; j < splitsChildren.getLength(); j++) {
             Node current = splitsChildren.item(j);
             if (current.getNodeName().equals("SPLIT")) {
-                splits.add((Element) current);
+                splits[index++] = ((Element) current);
             }
         }
         return splits;

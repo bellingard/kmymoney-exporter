@@ -9,20 +9,21 @@ public class Transaction {
 
     // Mandatory
     private String id;
-    private Account bankAccount;
+    private Account fromAccount;
+    private Account toAccount;
     private String date;
     private Float amount;
 
     // Optional
     private Payee payee;
-    private Account category;
     private String description;
 
-    public Transaction(String id, Account bankAccount, String date, Float amount) {
+    public Transaction(String id, Account fromAccount, Account toAccount, String date, Float amount) {
         this.id = id;
         this.date = date;
         this.amount = amount;
-        setBankAccount(bankAccount);
+        setFromAccount(fromAccount);
+        setToAccount(toAccount);
     }
 
     public String getId() {
@@ -33,16 +34,28 @@ public class Transaction {
         this.id = id;
     }
 
-    public Account getBankAccount() {
-        return bankAccount;
+    public Account getFromAccount() {
+        return fromAccount;
     }
 
-    public void setBankAccount(Account bankAccount) {
-        if (this.bankAccount != null) {
-            this.bankAccount.removeTransaction(this);
+    public void setFromAccount(Account fromAccount) {
+        if (this.fromAccount != null) {
+            this.fromAccount.removeTransaction(this);
         }
-        this.bankAccount = bankAccount;
-        this.bankAccount.addTransaction(this);
+        this.fromAccount = fromAccount;
+        this.fromAccount.addTransaction(this);
+    }
+
+    public Account getToAccount() {
+        return toAccount;
+    }
+
+    public void setToAccount(Account toAccount) {
+        if (this.toAccount != null) {
+            this.toAccount.removeTransaction(this);
+        }
+        this.toAccount = toAccount;
+        this.toAccount.addTransaction(this);
     }
 
     public String getDate() {
@@ -69,18 +82,6 @@ public class Transaction {
         this.payee = payee;
     }
 
-    public Optional<Account> getCategory() {
-        return Optional.ofNullable(category);
-    }
-
-    public void setCategory(Account category) {
-        if (this.category != null) {
-            this.category.removeTransaction(this);
-        }
-        this.category = category;
-        this.category.addTransaction(this);
-    }
-
     public Optional<String> getDescription() {
         return Optional.ofNullable(description);
     }
@@ -93,11 +94,11 @@ public class Transaction {
     public String toString() {
         return "Transaction{" +
                 "id='" + id + '\'' +
-                ", bankAccount=" + bankAccount.getName() +
                 ", date='" + date + '\'' +
+                ", fromAccount=" + fromAccount.getName() +
+                ", toAccount=" + (toAccount == null ? "null" : toAccount.getName()) +
                 ", amount=" + amount +
                 ", payee=" + (payee == null ? "null" : payee.getName()) +
-                ", category=" + (category == null ? "null" : category.getName()) +
                 ", description='" + description + '\'' +
                 '}';
     }
