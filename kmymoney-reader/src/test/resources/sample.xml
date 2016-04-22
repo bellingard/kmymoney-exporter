@@ -3,7 +3,7 @@
 <KMYMONEY-FILE>
  <FILEINFO>
   <CREATION_DATE date="2016-04-12"/>
-  <LAST_MODIFIED_DATE date="2016-04-19"/>
+  <LAST_MODIFIED_DATE date="2016-04-22"/>
   <VERSION id="1"/>
   <FIXVERSION id="4"/>
  </FILEINFO>
@@ -19,7 +19,7 @@
    </ACCOUNTIDS>
   </INSTITUTION>
  </INSTITUTIONS>
- <PAYEES count="3">
+ <PAYEES count="4">
   <PAYEE matchingenabled="0" email="" id="P000001" name="Auchan" reference="">
    <ADDRESS street="" postcode="" telephone="" city="" state=""/>
   </PAYEE>
@@ -27,6 +27,9 @@
    <ADDRESS street="" postcode="" telephone="" city="" state=""/>
   </PAYEE>
   <PAYEE matchingenabled="0" email="" id="P000003" name="SonarSource" reference="">
+   <ADDRESS street="" postcode="" telephone="" city="" state=""/>
+  </PAYEE>
+  <PAYEE matchingenabled="0" email="" id="P000004" name="Fab" reference="">
    <ADDRESS street="" postcode="" telephone="" city="" state=""/>
   </PAYEE>
  </PAYEES>
@@ -70,10 +73,10 @@
     <PAIR key="lastStatementDate" value=""/>
    </KEYVALUEPAIRS>
   </ACCOUNT>
-  <ACCOUNT currency="EUR" description="" parentaccount="AStd::Asset" opened="2010-01-01" number="NumeroDeCompte" lastmodified="2016-04-19" type="1" id="A000001" lastreconciled="" institution="I000001" name="NomDuCompte">
+  <ACCOUNT currency="EUR" description="" parentaccount="AStd::Asset" opened="2010-01-01" number="NumeroDeCompte" lastmodified="2016-04-22" type="1" id="A000001" lastreconciled="" institution="I000001" name="NomDuCompte">
    <KEYVALUEPAIRS>
     <PAIR key="PreferredAccount" value="Yes"/>
-    <PAIR key="lastNumberUsed" value="3"/>
+    <PAIR key="lastNumberUsed" value="4"/>
     <PAIR key="lastStatementDate" value=""/>
    </KEYVALUEPAIRS>
   </ACCOUNT>
@@ -82,7 +85,7 @@
     <PAIR key="lastStatementDate" value=""/>
    </KEYVALUEPAIRS>
   </ACCOUNT>
-  <ACCOUNT currency="EUR" description="" parentaccount="AStd::Asset" opened="2011-01-01" number="CompteLivretA" lastmodified="2016-04-12" type="2" id="A000003" lastreconciled="" institution="I000001" name="LivretA">
+  <ACCOUNT currency="EUR" description="" parentaccount="AStd::Asset" opened="2011-01-01" number="CompteLivretA" lastmodified="2016-04-22" type="2" id="A000003" lastreconciled="" institution="I000001" name="LivretA">
    <KEYVALUEPAIRS>
     <PAIR key="IBAN" value="IBANduComteLivretA"/>
     <PAIR key="PreferredAccount" value="Yes"/>
@@ -105,7 +108,7 @@
    </KEYVALUEPAIRS>
   </ACCOUNT>
  </ACCOUNTS>
- <TRANSACTIONS count="5">
+ <TRANSACTIONS count="6">
   <TRANSACTION postdate="2010-01-01" commodity="EUR" memo="" id="T000000000000000001" entrydate="2016-04-12">
    <SPLITS>
     <SPLIT payee="" reconcileflag="0" shares="1234/1" reconciledate="" action="" bankid="" account="A000001" number="" value="1234/1" memo="" id="S0001"/>
@@ -134,6 +137,12 @@
    <SPLITS>
     <SPLIT payee="P000003" reconcileflag="0" shares="111614/25" reconciledate="" action="" bankid="" account="A000001" number="3" value="111614/25" memo="" id="S0001"/>
     <SPLIT payee="P000003" reconcileflag="0" shares="-111614/25" reconciledate="" action="" bankid="" account="A000006" number="" value="-111614/25" memo="" id="S0002"/>
+   </SPLITS>
+  </TRANSACTION>
+  <TRANSACTION postdate="2016-04-19" commodity="EUR" memo="" id="T000000000000000006" entrydate="2016-04-22">
+   <SPLITS>
+    <SPLIT payee="P000004" reconcileflag="0" shares="-333/50" reconciledate="" action="" bankid="" account="A000001" number="4" value="-333/50" memo="" id="S0001"/>
+    <SPLIT payee="P000004" reconcileflag="0" shares="333/50" reconciledate="" action="" bankid="" account="A000003" number="" value="333/50" memo="" id="S0002"/>
    </SPLITS>
   </TRANSACTION>
  </TRANSACTIONS>

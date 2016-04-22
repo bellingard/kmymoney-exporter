@@ -22,7 +22,7 @@ public class KMyMoneyReaderTest {
         repository = new Repository();
         KMyMoneyReader.on(file).populate(repository);
 
-        dumpStructure(repository);
+        //dumpStructure(repository);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class KMyMoneyReaderTest {
 
     @Test
     public void should_read_payees() throws Exception {
-        assertThat(repository.getPayees().size()).isEqualTo(3);
+        assertThat(repository.getPayees().size()).isEqualTo(4);
     }
 
     @Test
@@ -48,6 +48,18 @@ public class KMyMoneyReaderTest {
     @Test
     public void should_read_categories() throws Exception {
         assertThat(repository.getCategories().size()).isEqualTo(9);
+    }
+
+    @Test
+    public void should_read_transactions() throws Exception {
+        int numberOfBankTransactions = repository.getBankAccounts().stream()
+                .mapToInt(a -> a.listTransactions().size())
+                .sum();
+        int numberOfCategoryTransactions = repository.getCategories().stream()
+                .mapToInt(a -> a.listTransactions().size())
+                .sum();
+
+        assertThat(numberOfBankTransactions + numberOfCategoryTransactions).isEqualTo(6 * 2);
     }
 
     private static void dumpStructure(Repository repository) {

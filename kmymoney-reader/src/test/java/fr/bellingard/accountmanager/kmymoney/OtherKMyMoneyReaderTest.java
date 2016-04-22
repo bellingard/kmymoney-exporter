@@ -22,12 +22,34 @@ public class OtherKMyMoneyReaderTest {
         repository = new Repository();
         KMyMoneyReader.on(file).populate(repository);
 
-        dumpStructure(repository);
+        //dumpStructure(repository);
     }
 
     @Test
-    public void read_file() {
+    public void should_read_institutions() throws Exception {
+        assertThat(repository.getInstitutions().size()).isEqualTo(4);
+    }
 
+    @Test
+    public void should_read_payees() throws Exception {
+        assertThat(repository.getPayees().size()).isEqualTo(500);
+    }
+
+    @Test
+    public void should_read_accounts() throws Exception {
+        assertThat(repository.getBankAccounts().size() + repository.getCategories().size()).isEqualTo(228);
+    }
+
+    @Test
+    public void should_read_transactions() throws Exception {
+        int numberOfBankTransactions = repository.getBankAccounts().stream()
+                .mapToInt(a -> a.listTransactions().size())
+                .sum();
+        int numberOfCategoryTransactions = repository.getCategories().stream()
+                .mapToInt(a -> a.listTransactions().size())
+                .sum();
+
+        assertThat(numberOfBankTransactions + numberOfCategoryTransactions).isEqualTo(4542 * 2);
     }
 
     private static void dumpStructure(Repository repository) {

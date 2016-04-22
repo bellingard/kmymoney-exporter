@@ -148,9 +148,7 @@ public class KMyMoneyReader {
             Transaction transaction = new Transaction(id, fromAccount, toAccount, date, amount);
             transaction.setPayee(payee);
             transaction.setDescription(description);
-            System.out.println(transaction);
         }
-
     }
 
     private Element[] extractSplits(Element transactionElement) {
