@@ -1,5 +1,6 @@
 package fr.bellingard.accountmanager.kmymoney;
 
+import fr.bellingard.accountmanager.model.Account;
 import fr.bellingard.accountmanager.model.Repository;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -60,6 +61,15 @@ public class KMyMoneyReaderTest {
                 .sum();
 
         assertThat(numberOfBankTransactions + numberOfCategoryTransactions).isEqualTo(6 * 2);
+    }
+
+    @Test
+    public void should_compute_balance_for_bank_accounts() throws Exception {
+        Account account1 = repository.findBankAccount("A000003").get();
+        assertThat(account1.getBalance()).isEqualTo(988266);
+
+        Account account2 = repository.findBankAccount("A000001").get();
+        assertThat(account2.getBalance()).isEqualTo(640090);
     }
 
     private static void dumpStructure(Repository repository) {

@@ -25,6 +25,12 @@ public class Account {
         transactions = new ArrayList<>();
     }
 
+    public Long getBalance() {
+        return transactions.stream()
+                .mapToLong(t -> (t.getFromAccount() == this ? t.getAmount() : - t.getAmount()))
+                .sum();
+    }
+
     public String getId() {
         return id;
     }

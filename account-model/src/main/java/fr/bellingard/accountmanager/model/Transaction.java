@@ -12,13 +12,13 @@ public class Transaction {
     private Account fromAccount;
     private Account toAccount;
     private String date;
-    private Float amount;
+    private Long amount;
 
     // Optional
     private Payee payee;
     private String description;
 
-    public Transaction(String id, Account fromAccount, Account toAccount, String date, Float amount) {
+    public Transaction(String id, Account fromAccount, Account toAccount, String date, Long amount) {
         this.id = id;
         this.date = date;
         this.amount = amount;
@@ -66,11 +66,11 @@ public class Transaction {
         this.date = date;
     }
 
-    public Float getAmount() {
+    public Long getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(Long amount) {
         this.amount = amount;
     }
 

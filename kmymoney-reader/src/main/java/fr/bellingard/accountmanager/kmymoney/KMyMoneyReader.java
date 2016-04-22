@@ -126,7 +126,7 @@ public class KMyMoneyReader {
             String date = transactionElement.getAttribute("postdate");
             Account fromAccount = null;
             Account toAccount = null;
-            Float amount = null;
+            Long amount = null;
             Payee payee = null;
             String description = null;
 
@@ -165,11 +165,11 @@ public class KMyMoneyReader {
         return splits;
     }
 
-    private Float convert(String value) {
+    private Long convert(String value) {
         String[] data = value.split("/");
-        float numerator = Float.parseFloat(data[0]);
-        float denominator = Float.parseFloat(data[1]);
-        return new Float(numerator / denominator);
+        long numerator = Long.parseLong(data[0]);
+        long denominator = Long.parseLong(data[1]);
+        return new Long(numerator * 100 / denominator);
     }
 
     private NodeList getXPathResults(final Node node, final String query)
