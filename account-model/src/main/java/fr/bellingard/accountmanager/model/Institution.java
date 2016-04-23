@@ -1,25 +1,19 @@
 package fr.bellingard.accountmanager.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 /**
  *
  */
-public class Institution {
+public class Institution extends Element {
 
-    private String id;
-    private String name;
     private Collection<Account> accounts;
 
     public Institution(String id, String name) {
-        this.id = id;
-        this.name = name;
+        super(id, name);
         accounts = new ArrayList<>();
-    }
-
-    public String getId() {
-        return id;
     }
 
     public void addAccount(Account account) {
@@ -34,38 +28,12 @@ public class Institution {
         return accounts;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Institution institution = (Institution) o;
-
-        return id.equals(institution.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
-
     @Override
     public String toString() {
         return "Institution{" +
-                "id='" + id + '\'' +
-                "name='" + name + '\'' +
+                "id='" + getId() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", accounts=" + Arrays.asList(accounts.stream().map(Account::getName).toArray()) +
                 '}';
     }
 

@@ -1,15 +1,16 @@
 package fr.bellingard.accountmanager.model;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Optional;
 
 /**
  *
  */
-public class Account {
+public class Account extends Element {
 
     // For every account
-    private String id;
-    private String name;
     private Account parent;
     private Collection<Account> subAccounts;
     private Collection<Transaction> transactions;
@@ -19,28 +20,15 @@ public class Account {
     private String accountNumber;
 
     public Account(String id, String name) {
-        this.id = id;
-        this.name = name;
+        super(id, name);
         subAccounts = new ArrayList<>();
         transactions = new ArrayList<>();
     }
 
     public Long getBalance() {
         return transactions.stream()
-                .mapToLong(t -> t.getFromAccount().equals(this) ? t.getAmount() : - t.getAmount())
+                .mapToLong(t -> t.getFromAccount().equals(this) ? t.getAmount() : -t.getAmount())
                 .sum();
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Optional<Account> getParent() {
@@ -100,32 +88,13 @@ public class Account {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Account account = (Account) o;
-
-        return id.equals(account.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
-
-    @Override
     public String toString() {
         return "Account{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
+                "id='" + getId() + '\'' +
+                ", name='" + getName() + '\'' +
                 ", parent=" + (parent == null ? "null" : parent.getName()) +
                 ", subAccounts=" + Arrays.asList(subAccounts.stream().map(Account::getName).toArray()) +
-                ", institution=" + institution +
+                ", institution=" + (institution == null ? "" : institution.getName()) +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", transactions=" + transactions.size() +
                 '}';
