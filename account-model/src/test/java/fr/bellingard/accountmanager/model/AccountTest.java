@@ -1,7 +1,6 @@
 package fr.bellingard.accountmanager.model;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -79,6 +78,18 @@ public class AccountTest {
 
         assertThat(parentAccount.listSubAccount()).containsExactly(account, subAccount2);
         assertThat(account.listSubAccount()).containsExactly(subAccount1);
+    }
+
+    @Test
+    public void should_compute_balance() throws Exception {
+        // standard transactions
+        new Transaction("T1", subAccount1, new Account("A1", ""), "", 1200L);
+        new Transaction("T2", subAccount1, new Account("A1", ""), "", -1000L);
+        new Transaction("T3", subAccount1, new Account("A1", ""), "", 2000L);
+        // and a transfer of 500 to another account
+        new Transaction("T4", subAccount2, subAccount1, "", 500L);
+
+        assertThat(subAccount1.getBalance()).isEqualTo(1200 - 1000 + 2000 - 500);
     }
 
 }
