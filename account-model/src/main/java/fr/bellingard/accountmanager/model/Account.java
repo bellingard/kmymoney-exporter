@@ -35,10 +35,6 @@ public class Account {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -52,8 +48,23 @@ public class Account {
     }
 
     public void setParent(Account parent) {
+        if (this.parent != null) {
+            this.parent.removeSubAccount(this);
+        }
         this.parent = parent;
         parent.addSubAccount(this);
+    }
+
+    private void addSubAccount(Account account) {
+        subAccounts.add(account);
+    }
+
+    private void removeSubAccount(Account account) {
+        subAccounts.remove(account);
+    }
+
+    public Collection<Account> listSubAccount() {
+        return subAccounts;
     }
 
     public Optional<Institution> getInstitution() {
@@ -86,14 +97,6 @@ public class Account {
 
     public Collection<Transaction> listTransactions() {
         return transactions;
-    }
-
-    public void addSubAccount(Account account) {
-        subAccounts.add(account);
-    }
-
-    public Collection<Account> listSubAccount() {
-        return subAccounts;
     }
 
     @Override

@@ -22,10 +22,6 @@ public class Institution {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public void addAccount(Account account) {
         accounts.add(account);
     }
@@ -68,6 +64,7 @@ public class Institution {
     @Override
     public String toString() {
         return "Institution{" +
+                "id='" + id + '\'' +
                 "name='" + name + '\'' +
                 '}';
     }
