@@ -27,7 +27,7 @@ public class Account extends Element {
 
     public Long getBalance() {
         return transactions.stream()
-                .mapToLong(t -> t.getFromAccount().equals(this) ? t.getAmount() : -t.getAmount())
+                .mapToLong(t -> t.getToAccount().equals(this) ? t.getAmount() : -t.getAmount())
                 .sum();
     }
 

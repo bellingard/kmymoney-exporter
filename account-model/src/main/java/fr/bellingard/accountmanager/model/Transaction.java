@@ -9,8 +9,8 @@ public class Transaction {
 
     // Mandatory
     private String id;
-    private Account fromAccount;
     private Account toAccount;
+    private Account fromAccount;
     private String date;
     private Long amount;
 
@@ -18,12 +18,12 @@ public class Transaction {
     private Payee payee;
     private String description;
 
-    public Transaction(String id, Account fromAccount, Account toAccount, String date, Long amount) {
+    public Transaction(String id, Account toAccount, Account fromAccount, String date, Long amount) {
         this.id = id;
         this.date = date;
         this.amount = amount;
-        setFromAccount(fromAccount);
         setToAccount(toAccount);
+        setFromAccount(fromAccount);
     }
 
     public String getId() {
@@ -32,18 +32,6 @@ public class Transaction {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Account getFromAccount() {
-        return fromAccount;
-    }
-
-    public void setFromAccount(Account fromAccount) {
-        if (this.fromAccount != null) {
-            this.fromAccount.removeTransaction(this);
-        }
-        this.fromAccount = fromAccount;
-        this.fromAccount.addTransaction(this);
     }
 
     public Account getToAccount() {
@@ -56,6 +44,18 @@ public class Transaction {
         }
         this.toAccount = toAccount;
         this.toAccount.addTransaction(this);
+    }
+
+    public Account getFromAccount() {
+        return fromAccount;
+    }
+
+    public void setFromAccount(Account fromAccount) {
+        if (this.fromAccount != null) {
+            this.fromAccount.removeTransaction(this);
+        }
+        this.fromAccount = fromAccount;
+        this.fromAccount.addTransaction(this);
     }
 
     public String getDate() {
@@ -114,8 +114,8 @@ public class Transaction {
         return "Transaction{" +
                 "id='" + id + '\'' +
                 ", date='" + date + '\'' +
-                ", fromAccount=" + fromAccount.getName() +
-                ", toAccount=" + (toAccount == null ? "null" : toAccount.getName()) +
+                ", toAccount=" + toAccount.getName() +
+                ", fromAccount=" + (fromAccount == null ? "null" : fromAccount.getName()) +
                 ", amount=" + amount +
                 ", payee=" + (payee == null ? "null" : payee.getName()) +
                 ", description='" + description + '\'' +

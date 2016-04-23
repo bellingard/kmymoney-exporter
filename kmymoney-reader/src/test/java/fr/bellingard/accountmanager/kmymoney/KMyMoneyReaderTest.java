@@ -28,7 +28,7 @@ public class KMyMoneyReaderTest {
         repository = new Repository();
         KMyMoneyReader.on(file).populate(repository);
 
-        dumpStructure(repository);
+        //dumpStructure(repository);
         //dumpBankAccountBalance(repository);
     }
 
