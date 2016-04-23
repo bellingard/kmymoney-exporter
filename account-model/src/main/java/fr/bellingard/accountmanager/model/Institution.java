@@ -47,6 +47,25 @@ public class Institution {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Institution institution = (Institution) o;
+
+        return id.equals(institution.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
     public String toString() {
         return "Institution{" +
                 "name='" + name + '\'' +

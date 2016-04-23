@@ -27,7 +27,7 @@ public class Account {
 
     public Long getBalance() {
         return transactions.stream()
-                .mapToLong(t -> (t.getFromAccount() == this ? t.getAmount() : - t.getAmount()))
+                .mapToLong(t -> t.getFromAccount().equals(this) ? t.getAmount() : - t.getAmount())
                 .sum();
     }
 
@@ -97,12 +97,31 @@ public class Account {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Account account = (Account) o;
+
+        return id.equals(account.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
     public String toString() {
         return "Account{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", parent=" + (parent == null ? "null" : parent.getName()) +
-                ", subAccounts=" + Arrays.asList(subAccounts.stream().map(a -> a.getName()).toArray()) +
+                ", subAccounts=" + Arrays.asList(subAccounts.stream().map(Account::getName).toArray()) +
                 ", institution=" + institution +
                 ", accountNumber='" + accountNumber + '\'' +
                 ", transactions=" + transactions.size() +
