@@ -3,7 +3,9 @@ package fr.bellingard.accountmanager.kmymoney;
 import fr.bellingard.accountmanager.model.Account;
 import fr.bellingard.accountmanager.model.Repository;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,6 +17,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class KMyMoneyReaderTest {
 
+    @Rule
+    public ExpectedException exception = ExpectedException.none();
+
     private static Repository repository;
 
     @BeforeClass
@@ -24,6 +29,31 @@ public class KMyMoneyReaderTest {
         KMyMoneyReader.on(file).populate(repository);
 
         //dumpStructure(repository);
+        //dumpBankAccountBalance(repository);
+    }
+
+    @Test
+    public void try_read_wrong_kmy_file() throws Exception {
+        Path file = Paths.get(ClassLoader.getSystemResource("sample.xml").toURI());
+        Repository repository = new Repository();
+
+        exception.expect(ReaderException.class);
+        exception.expectMessage("Could not read KMyMoneyFile");
+        exception.expectMessage("sample.xml");
+
+        KMyMoneyReader.on(file).populate(repository);
+    }
+
+    @Test
+    public void try_read_non_valid_kmy_file() throws Exception {
+        Path file = Paths.get(ClassLoader.getSystemResource("non-valid.kmy").toURI());
+        Repository repository = new Repository();
+
+        exception.expect(ReaderException.class);
+        exception.expectMessage("Could not parse KMyMoneyFile");
+        exception.expectMessage("non-valid.kmy");
+
+        KMyMoneyReader.on(file).populate(repository);
     }
 
     @Test
@@ -81,6 +111,11 @@ public class KMyMoneyReaderTest {
         repository.getBankAccounts().stream().forEach(KMyMoneyReaderTest::print);
         print("\n\n####  CATEGORIES ####");
         repository.getCategories().stream().forEach(KMyMoneyReaderTest::print);
+    }
+
+    private static void dumpBankAccountBalance(Repository repository) {
+        repository.getBankAccounts().stream()
+                .forEach(a -> print(a.getId() + " / " + a.getName() + " => " + (a.getBalance().floatValue()/100)));
     }
 
     private static void print(Object a) {

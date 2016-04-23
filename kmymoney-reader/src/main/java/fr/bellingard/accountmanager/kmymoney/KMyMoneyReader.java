@@ -35,7 +35,7 @@ public class KMyMoneyReader {
         return reader;
     }
 
-    public void populate(Repository repository) {
+    public void populate(Repository repository) throws ReaderException {
         try (GZIPInputStream input = new GZIPInputStream(new FileInputStream(kmyFile.toFile()))) {
             DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
             domFactory.setNamespaceAware(true);
@@ -47,11 +47,9 @@ public class KMyMoneyReader {
             loadAccounts(repository, xmlDoc);
             loadTransactions(repository, xmlDoc);
         } catch (IOException e) {
-            // TODO pbm with file -  do something
-            e.printStackTrace();
+            throw new ReaderException("Could not read KMyMoneyFile: " + kmyFile, e);
         } catch (ParserConfigurationException | SAXException | XPathExpressionException e) {
-            // TODO pbm with content of the file -  do something
-            e.printStackTrace();
+            throw new ReaderException("Could not parse KMyMoneyFile: " + kmyFile, e);
         }
     }
 
@@ -124,11 +122,11 @@ public class KMyMoneyReader {
 
             String id = transactionElement.getAttribute("id");
             String date = transactionElement.getAttribute("postdate");
-            Account fromAccount = null;
-            Account toAccount = null;
-            Long amount = null;
-            Payee payee = null;
-            String description = null;
+            Account fromAccount;
+            Account toAccount;
+            Long amount;
+            Payee payee;
+            String description;
 
             Element[] splits = extractSplits(transactionElement);
 
@@ -158,8 +156,8 @@ public class KMyMoneyReader {
         NodeList splitsChildren = transactionElement.getChildNodes().item(1).getChildNodes();
         for (int j = 0; j < splitsChildren.getLength(); j++) {
             Node current = splitsChildren.item(j);
-            if (current.getNodeName().equals("SPLIT")) {
-                splits[index++] = ((Element) current);
+            if ("SPLIT".equals(current.getNodeName())) {
+                splits[index++] = (Element) current;
             }
         }
         return splits;
@@ -169,7 +167,7 @@ public class KMyMoneyReader {
         String[] data = value.split("/");
         long numerator = Long.parseLong(data[0]);
         long denominator = Long.parseLong(data[1]);
-        return new Long(numerator * 100 / denominator);
+        return numerator * 100 / denominator;
     }
 
     private NodeList getXPathResults(final Node node, final String query)
