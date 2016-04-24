@@ -14,11 +14,13 @@ public class AccountTest {
     private Account parentAccount;
     private Account subAccount1;
     private Account subAccount2;
+    private Institution institution;
 
     @Before
     public void init() {
+        institution = new Institution("I001", "");
         account = new Account("A001", "An Account");
-        account.setInstitution(new Institution("I001", ""));
+        account.setInstitution(institution);
         account.setAccountNumber("123456");
 
         parentAccount = new Account("A00P", "Parent");
@@ -81,6 +83,17 @@ public class AccountTest {
     }
 
     @Test
+    public void should_change_institution() throws Exception {
+        assertThat(institution.listAccounts()).containsExactly(account);
+
+        Institution otherInstitution = new Institution("I002", "");
+        account.setInstitution(otherInstitution);
+
+        assertThat(institution.listAccounts()).isEmpty();
+        assertThat(otherInstitution.listAccounts()).containsExactly(account);
+    }
+
+    @Test
     public void should_compute_balance() throws Exception {
         // standard transactions
         new Transaction("T1", subAccount1, new Account("A1", ""), "", 1200L);
@@ -92,4 +105,14 @@ public class AccountTest {
         assertThat(subAccount1.getBalance()).isEqualTo(1200 - 1000 + 2000 - 500);
     }
 
+    @Test
+    public void should_manage_transactions() throws Exception {
+        Transaction t1 = new Transaction("T1", subAccount1, new Account("A1", ""), "", 1200L);
+        Transaction t2 = new Transaction("T2", subAccount1, new Account("A1", ""), "", -1000L);
+
+        assertThat(subAccount1.listTransactions()).containsExactly(t1, t2);
+
+        subAccount1.removeTransaction(t1);
+        assertThat(subAccount1.listTransactions()).containsExactly(t2);
+    }
 }

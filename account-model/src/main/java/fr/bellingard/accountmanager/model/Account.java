@@ -61,7 +61,7 @@ public class Account extends Element {
 
     public void setInstitution(Institution institution) {
         if (this.institution != null) {
-            institution.removeAccount(this);
+            this.institution.removeAccount(this);
         }
         this.institution = institution;
         institution.addAccount(this);
