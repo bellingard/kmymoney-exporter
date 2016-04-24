@@ -8,8 +8,31 @@
     <packaging>pom</packaging>
 
     <name>Personal Account Manager</name>
-    <url>http://home.apache.org/~bellingard</url>
+    <description>App to manage your own accounts easily.</description>
+    <url>https://github.com/bellingard/personal-account-manager</url>
     <inceptionYear>2016</inceptionYear>
+
+    <organization>
+        <name>Fabrice BELLINGARD</name>
+        <url>http://home.apache.org/~bellingard</url>
+    </organization>
+
+    <scm>
+        <connection>scm:git:git@github.com:bellingard/personal-account-manager.git</connection>
+        <developerConnection>scm:git:git@github.com:bellingard/personal-account-manager.git</developerConnection>
+        <url>https://github.com/bellingard/personal-account-manager</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <ciManagement>
+        <system>travis-ci</system>
+        <url>https://travis-ci.org/bellingard/personal-account-manager</url>
+    </ciManagement>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/bellingard/personal-account-manager/issues</url>
+    </issueManagement>
 
     <licenses>
         <license>
