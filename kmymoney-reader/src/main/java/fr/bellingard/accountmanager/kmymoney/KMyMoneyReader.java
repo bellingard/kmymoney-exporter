@@ -44,7 +44,7 @@ public class KMyMoneyReader {
     /**
      * Loads information found in the file into the given Repository.
      *
-     * @param repository
+     * @param repository the repository
      * @throws ReaderException
      */
     public void populate(Repository repository) throws ReaderException {
@@ -134,8 +134,8 @@ public class KMyMoneyReader {
 
             String id = transactionElement.getAttribute("id");
             String date = transactionElement.getAttribute("postdate");
-            Account fromAccount;
             Account toAccount;
+            Account fromAccount;
             Long amount;
             Payee payee;
             String description;
@@ -144,18 +144,18 @@ public class KMyMoneyReader {
 
             Element firstElement = splits[0];
             payee = repository.findPayee(firstElement.getAttribute("payee")).orElse(null);
-            fromAccount = repository.findBankAccount(firstElement.getAttribute("account")).orElse(null);
+            toAccount = repository.findBankAccount(firstElement.getAttribute("account")).orElse(null);
             amount = convert(firstElement.getAttribute("shares"));
             description = firstElement.getAttribute("memo").trim();
 
             Element secondElement = splits[1];
-            toAccount = repository.findCategory(secondElement.getAttribute("account")).orElse(null);
-            if (toAccount == null) {
+            fromAccount = repository.findCategory(secondElement.getAttribute("account")).orElse(null);
+            if (fromAccount == null) {
                 // this is a transfer between 2 back accounts
-                toAccount = repository.findBankAccount(secondElement.getAttribute("account")).orElse(null);
+                fromAccount = repository.findBankAccount(secondElement.getAttribute("account")).orElse(null);
             }
 
-            Transaction transaction = new Transaction(id, fromAccount, toAccount, date, amount);
+            Transaction transaction = new Transaction(id, toAccount, fromAccount, date, amount);
             transaction.setPayee(payee);
             transaction.setDescription(description);
         }
