@@ -20,7 +20,7 @@ import java.util.Optional;
 import java.util.zip.GZIPInputStream;
 
 /**
- *
+ * Allows to read a ".kmy" file and load information into a Repository.
  */
 public class KMyMoneyReader {
 
@@ -29,12 +29,24 @@ public class KMyMoneyReader {
     private KMyMoneyReader() {
     }
 
+    /**
+     * Creates a reader from the given ".kmy" file.
+     *
+     * @param kmyFile the ".kmy" file
+     * @return the reader
+     */
     public static KMyMoneyReader on(Path kmyFile) {
         KMyMoneyReader reader = new KMyMoneyReader();
         reader.kmyFile = kmyFile;
         return reader;
     }
 
+    /**
+     * Loads information found in the file into the given Repository.
+     *
+     * @param repository
+     * @throws ReaderException
+     */
     public void populate(Repository repository) throws ReaderException {
         try (GZIPInputStream input = new GZIPInputStream(new FileInputStream(kmyFile.toFile()))) {
             DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();

@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- *
+ * Repository that holds all the information of the personal account manager.
  */
 public class Repository {
 
@@ -15,6 +15,9 @@ public class Repository {
     private Map<String, Account> bankAccounts;
     private Map<String, Account> categories;
 
+    /**
+     * Creates the repository.
+     */
     public Repository() {
         institutions = new HashMap<>();
         payees = new HashMap<>();
@@ -26,10 +29,21 @@ public class Repository {
         return institutions.values();
     }
 
+    /**
+     * Finds an institution based on its ID.
+     *
+     * @param id
+     * @return
+     */
     public Optional<Institution> findInstitution(String id) {
         return Optional.ofNullable(institutions.get(id));
     }
 
+    /**
+     * Adds a new institution.
+     *
+     * @param institution
+     */
     public void addInstitution(Institution institution) {
         institutions.put(institution.getId(), institution);
     }
@@ -38,10 +52,21 @@ public class Repository {
         return payees.values();
     }
 
+    /**
+     * Finds a payee based on its ID.
+     *
+     * @param id
+     * @return
+     */
     public Optional<Payee> findPayee(String id) {
         return Optional.ofNullable(payees.get(id));
     }
 
+    /**
+     * Adds a new payee.
+     *
+     * @param payee
+     */
     public void addPayee(Payee payee) {
         payees.put(payee.getId(), payee);
     }
@@ -50,10 +75,21 @@ public class Repository {
         return bankAccounts.values();
     }
 
+    /**
+     * Finds a bank account based on its ID.
+     *
+     * @param id
+     * @return
+     */
     public Optional<Account> findBankAccount(String id) {
         return Optional.ofNullable(bankAccounts.get(id));
     }
 
+    /**
+     * Adds a new bank account.
+     *
+     * @param bankAccount
+     */
     public void addBankAccount(Account bankAccount) {
         bankAccounts.put(bankAccount.getId(), bankAccount);
     }
@@ -62,10 +98,21 @@ public class Repository {
         return categories.values();
     }
 
+    /**
+     * Finds a category based on its ID.
+     *
+     * @param id
+     * @return
+     */
     public Optional<Account> findCategory(String id) {
         return Optional.ofNullable(categories.get(id));
     }
 
+    /**
+     * Adds a new category.
+     *
+     * @param category
+     */
     public void addCategory(Account category) {
         categories.put(category.getId(), category);
     }

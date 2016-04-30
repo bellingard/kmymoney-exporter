@@ -1,13 +1,19 @@
 package fr.bellingard.accountmanager.model;
 
 /**
- *
+ * Abstract class for many concepts
  */
 public abstract class Element {
 
     private String id;
     private String name;
 
+    /**
+     * Creates an element referenced by its immutable ID and with the given name.
+     *
+     * @param id
+     * @param name
+     */
     public Element(String id, String name) {
         this.id = id;
         this.name = name;

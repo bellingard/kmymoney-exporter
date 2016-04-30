@@ -3,7 +3,7 @@ package fr.bellingard.accountmanager.model;
 import java.util.Optional;
 
 /**
- *
+ * Represents a single transaction in an account.
  */
 public class Transaction {
 
@@ -18,6 +18,15 @@ public class Transaction {
     private Payee payee;
     private String description;
 
+    /**
+     * Creates a transaction.
+     *
+     * @param id
+     * @param toAccount
+     * @param fromAccount
+     * @param date
+     * @param amount
+     */
     public Transaction(String id, Account toAccount, Account fromAccount, String date, Long amount) {
         this.id = id;
         this.date = date;
