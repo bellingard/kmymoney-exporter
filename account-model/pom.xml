@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>account-model</artifactId>
-    <name>Account Model</name>
+    <name>Personal Account Manager :: Model</name>
 
     <dependencies>
     </dependencies>
