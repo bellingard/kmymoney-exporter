@@ -2,6 +2,7 @@ package fr.bellingard.accountmanager.kmymoney;
 
 import fr.bellingard.accountmanager.model.Account;
 import fr.bellingard.accountmanager.model.Repository;
+import fr.bellingard.accountmanager.model.export.JSONExporter;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
@@ -28,8 +29,8 @@ public class KMyMoneyReaderTest {
         repository = new Repository();
         KMyMoneyReader.on(file).populate(repository);
 
-        //dumpStructure(repository);
-        //dumpBankAccountBalance(repository);
+        dumpStructure(repository);
+        dumpBankAccountBalance(repository);
     }
 
     @Test
@@ -85,12 +86,18 @@ public class KMyMoneyReaderTest {
     public void should_read_transactions() throws Exception {
         int numberOfBankTransactions = repository.getBankAccounts().stream()
                 .mapToInt(a -> a.listTransactions().size())
-                .sum();
+                .sum(); // 7 - because one transaction is from one bank account to another
         int numberOfCategoryTransactions = repository.getCategories().stream()
                 .mapToInt(a -> a.listTransactions().size())
-                .sum();
+                .sum(); // 5
 
         assertThat(numberOfBankTransactions + numberOfCategoryTransactions).isEqualTo(6 * 2);
+
+        int numberOfUniqueTransactions = repository.getBankAccounts().stream()
+                .flatMap(a -> a.listTransactions().stream())
+                .distinct()
+                .toArray().length;
+        assertThat(numberOfUniqueTransactions).isEqualTo(6);
     }
 
     @Test
@@ -103,19 +110,12 @@ public class KMyMoneyReaderTest {
     }
 
     private static void dumpStructure(Repository repository) {
-        print("####  INSTITUTIONS ####");
-        repository.getInstitutions().stream().forEach(KMyMoneyReaderTest::print);
-        print("\n\n####  PAYEES ####");
-        repository.getPayees().stream().forEach(KMyMoneyReaderTest::print);
-        print("\n\n####  BANK ACCOUNTS ####");
-        repository.getBankAccounts().stream().forEach(KMyMoneyReaderTest::print);
-        print("\n\n####  CATEGORIES ####");
-        repository.getCategories().stream().forEach(KMyMoneyReaderTest::print);
+        print(JSONExporter.export(repository));
     }
 
     private static void dumpBankAccountBalance(Repository repository) {
         repository.getBankAccounts().stream()
-                .forEach(a -> print(a.getId() + " / " + a.getName() + " => " + (a.getBalance().floatValue()/100)));
+                .forEach(a -> print(a.getId() + " / " + a.getName() + " => " + (a.getBalance().floatValue() / 100)));
     }
 
     private static void print(Object a) {
