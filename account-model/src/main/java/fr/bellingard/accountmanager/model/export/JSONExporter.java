@@ -5,14 +5,21 @@ import fr.bellingard.accountmanager.model.Element;
 import fr.bellingard.accountmanager.model.Repository;
 import fr.bellingard.accountmanager.model.Transaction;
 
-import java.util.Collection;
-import java.util.Optional;
-
 /**
- * Exports a Repository into a JSON file
+ * Exports a Repository into a JSON representation
  */
 public class JSONExporter {
 
+    private JSONExporter() {
+        // private constructor for utility class
+    }
+
+    /**
+     * Returns a JSON string representing the repository
+     *
+     * @param repository the repository to serialize
+     * @return the JSON representation
+     */
     public static String export(Repository repository) {
         StringBuilder json = new StringBuilder();
 
