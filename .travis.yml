@@ -9,7 +9,8 @@ env:
   - secure: "d1YZ+Egll3q6vW8KfA3DB5d6JVVDSeHcqO6FRHGg9/8OF7SWIQSK7lzBNb1Mrlw1rkReqrItN4DIiFDtqwaR9IhzSHohrZ/msGIJmtc5WEOsyDBnlDUdAAvt8VPorHU5hT3cnxIywKxMZ5ZL42lM3gMmAu8Nsn4v9qPMLG8sHJPh9+GO1gfgVLZFMm6s1mojf17bBdh7bQ5nSw0tHmuvpk/ld9WqbSxQbkz9YIyd8WTOgzj8AtIhrqFiqxUxY1Bp0Cdr1L95aSDcuFiwrURpxEvotmL/8/WNfV01dScT2b3TEW8sqNiWD5Bd/qcjkmJrL507HuzhBose5+G31M+nXeCv48IoEODRynX9q796LkFRBaG28TZdSyKQWkkG3FlFVdMFE+6se0BD/Yat2C6uuZMYr2mLvhDsHxkVUw0F9qBBEP8xUxmeDIbpZY8wbDDyv0dEFLBAN6lDthM9HF1YpyvwP/pIUjyWiSwM+ZoAJ8FFtH+wX3Bg2ay3pt5DZsDzPsmcYV/hIHDpTUOy4v9PslRJ3eMolWB8BCTPB5/4Lnde9jlC8OsznL6dFDCno+BVtr3V4PUkf/Xv5NoljZ5NtxqmvQDnxvim8j/XLTs6snQfR1lZGZJRHUlcM5O3d4CDi4Pq6lBf4GbZqOgFUAlGGhOeM1jC0Fq+clfLJb8rcRM="
 
 script:
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.login=$SONARQUBE_TOKEN
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.login=test
+  - echo "Trying to fail the scan..."
 
 cache:
   directories:
