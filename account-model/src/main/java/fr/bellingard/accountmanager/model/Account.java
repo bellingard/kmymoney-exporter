@@ -10,6 +10,8 @@ import java.util.Optional;
  */
 public class Account extends Element {
 
+    public int b;
+    
     // For every account
     private Account parent;
     private Collection<Account> subAccounts;

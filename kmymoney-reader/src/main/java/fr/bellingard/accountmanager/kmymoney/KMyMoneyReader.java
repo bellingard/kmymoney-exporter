@@ -25,6 +25,8 @@ import java.util.zip.GZIPInputStream;
 public class KMyMoneyReader {
 
     private Path kmyFile;
+    
+    public int a;
 
     private KMyMoneyReader() {
     }
