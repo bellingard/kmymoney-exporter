@@ -1,4 +1,4 @@
-Personal Account Manager
+KMyMoney Exporter
 =======================
 
-[![Build status](https://travis-ci.org/bellingard/personal-account-manager.svg?branch=master)](https://travis-ci.org/bellingard/personal-account-manager) [![Quality Gate](https://sonarqube.com/api/badges/gate?key=fr.bellingard.account-manager:account-manager)](https://sonarqube.com/dashboard/index/fr.bellingard.account-manager:account-manager)
+[![Build status](https://travis-ci.org/bellingard/kmymoney-exporter.svg?branch=master)](https://travis-ci.org/bellingard/kmymoney-exporter) [![Quality Gate](https://sonarqube.com/api/badges/gate?key=fr.bellingard.kmymoney:kmymoney-exporter)](https://sonarqube.com/dashboard/index/fr.bellingard.kmymoney:kmymoney-exporter)

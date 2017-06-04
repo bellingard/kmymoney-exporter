@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>fr.bellingard.account-manager</groupId>
-        <artifactId>account-manager</artifactId>
+        <groupId>fr.bellingard.kmymoney</groupId>
+        <artifactId>kmymoney-exporter</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>kmymoney-reader</artifactId>
-    <name>KMyMoney Reader</name>
+    <name>KMyMoney Exporter :: KMyMoney Reader</name>
 
     <dependencies>
         <dependency>

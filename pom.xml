@@ -2,14 +2,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>fr.bellingard.account-manager</groupId>
-    <artifactId>account-manager</artifactId>
+    <groupId>fr.bellingard.kmymoney</groupId>
+    <artifactId>kmymoney-exporter</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Personal Account Manager</name>
-    <description>App to manage your own accounts easily.</description>
-    <url>https://github.com/bellingard/personal-account-manager</url>
+    <name>KMyMoney Exporter</name>
+    <description>Exports KMyMoney files to JSON structure</description>
+    <url>https://github.com/bellingard/kmymoney-exporter</url>
     <inceptionYear>2016</inceptionYear>
 
     <organization>
@@ -18,20 +18,20 @@
     </organization>
 
     <scm>
-        <connection>scm:git:git@github.com:bellingard/personal-account-manager.git</connection>
-        <developerConnection>scm:git:git@github.com:bellingard/personal-account-manager.git</developerConnection>
-        <url>https://github.com/bellingard/personal-account-manager</url>
+        <connection>scm:git:git@github.com:bellingard/kmymoney-exporter.git</connection>
+        <developerConnection>scm:git:git@github.com:bellingard/kmymoney-exporter.git</developerConnection>
+        <url>https://github.com/bellingard/kmymoney-exporter</url>
         <tag>HEAD</tag>
     </scm>
 
     <ciManagement>
         <system>travis-ci</system>
-        <url>https://travis-ci.org/bellingard/personal-account-manager</url>
+        <url>https://travis-ci.org/bellingard/kmymoney-exporter</url>
     </ciManagement>
 
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/bellingard/personal-account-manager/issues</url>
+        <url>https://github.com/bellingard/kmymoney-exporter/issues</url>
     </issueManagement>
 
     <licenses>
