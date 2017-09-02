@@ -19,7 +19,7 @@ public class OtherKMyMoneyReaderTest {
 
     @BeforeClass
     public static void prepareFile() throws Exception {
-        Path file = Paths.get("/Users/bellingard/AccountPersonalApp/some-tests/Comptes.kmy");
+        Path file = Paths.get("/Users/bellingard/Repos/_PERSO_/_resources_/some-tests/Comptes.kmy");
         repository = new Repository();
         KMyMoneyReader.on(file).populate(repository);
 
@@ -34,12 +34,12 @@ public class OtherKMyMoneyReaderTest {
 
     @Test
     public void should_read_payees() throws Exception {
-        assertThat(repository.getPayees().size()).isEqualTo(500);
+        assertThat(repository.getPayees().size()).isEqualTo(560);
     }
 
     @Test
     public void should_read_accounts() throws Exception {
-        assertThat(repository.getBankAccounts().size() + repository.getCategories().size()).isEqualTo(228);
+        assertThat(repository.getBankAccounts().size() + repository.getCategories().size()).isEqualTo(231);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class OtherKMyMoneyReaderTest {
                 .mapToInt(a -> a.listTransactions().size())
                 .sum();
 
-        assertThat(numberOfBankTransactions + numberOfCategoryTransactions).isEqualTo(4542 * 2);
+        assertThat(numberOfBankTransactions + numberOfCategoryTransactions).isEqualTo(5829 * 2);
     }
 
     private static void dumpStructure(Repository repository) {
