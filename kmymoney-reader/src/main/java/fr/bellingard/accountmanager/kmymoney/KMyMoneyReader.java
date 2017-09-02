@@ -14,9 +14,7 @@ import javax.xml.xpath.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.zip.GZIPInputStream;
 
 /**
@@ -102,9 +100,14 @@ public class KMyMoneyReader {
             Account account = new Account(id, name);
             accounts.put(id, account);
 
+            String type = accountElement.getAttribute("type");
             String institutionId = accountElement.getAttribute("institution");
             Optional<Institution> institution = repository.findInstitution(institutionId);
-            if (institution.isPresent()) {
+            if (type.equals("1") || type.equals("2")) {
+                if (!institution.isPresent()) {
+                    throw new XPathExpressionException("Account of type 1 or 2 does not have an institution: "
+                            + id + " - " + name);
+                }
                 // this is a bank account
                 repository.addBankAccount(account);
                 account.setInstitution(institution.get());
@@ -114,6 +117,7 @@ public class KMyMoneyReader {
                 repository.addCategory(account);
             }
         }
+
         // Then create hierarchy of existing accounts
         for (int i = 0; i < nodes.getLength(); i++) {
             accountElement = (Element) nodes.item(i);
