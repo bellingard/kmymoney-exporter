@@ -5,6 +5,7 @@ import fr.bellingard.accountmanager.model.export.JSONExporter;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -54,11 +55,23 @@ public class OtherKMyMoneyReaderTest {
         assertThat(numberOfBankTransactions + numberOfCategoryTransactions).isEqualTo(5829 * 2);
     }
 
-    private static void dumpStructure(Repository repository) {
-        print(JSONExporter.export(repository));
+    private static void dumpStructure(Repository repository) throws Exception {
+        Path file = Paths.get("/Users/bellingard/Repos/_PERSO_/_resources_/some-tests/Comptes.json");
+        if (file.toFile().exists()) {
+            throw new Exception("File already exists, won't dump JSON content into it.");
+        }
+
+        String jsonContent = JSONExporter.export(repository);
+        Files.write(file, jsonContent.getBytes());
+
+        //System.out.println("");
+        //System.out.println("");
+        //print(jsonContent);
     }
 
     private static void dumpBankAccountBalance(Repository repository) {
+        System.out.println("");
+        System.out.println("");
         repository.getBankAccounts().stream()
                 .forEach(a -> print(a.getId() + " / " + a.getName() + " => " + (a.getBalance().floatValue() / 100)));
     }
