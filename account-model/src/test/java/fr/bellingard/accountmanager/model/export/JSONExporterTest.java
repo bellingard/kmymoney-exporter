@@ -33,6 +33,7 @@ public class JSONExporterTest {
         bankAccount1.setInstitution(i1);
         bankAccount1.setAccountNumber("12345");
         bankAccount1.setParent(allBankAccounts);
+        bankAccount1.setClosed(true);
         repository.addBankAccount(bankAccount1);
 
         Account bankAccount2 = new Account("BA2", "LCL");

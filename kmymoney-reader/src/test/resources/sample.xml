@@ -90,6 +90,7 @@
     <PAIR key="IBAN" value="IBANduComteLivretA"/>
     <PAIR key="PreferredAccount" value="Yes"/>
     <PAIR key="lastStatementDate" value=""/>
+    <PAIR key="mm-closed" value="yes"/>
    </KEYVALUEPAIRS>
   </ACCOUNT>
   <ACCOUNT currency="EUR" description="" parentaccount="AStd::Expense" opened="2016-04-12" number="" lastmodified="2016-04-12" type="13" id="A000004" lastreconciled="" institution="" name="Alimentation">

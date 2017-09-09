@@ -19,6 +19,8 @@ public class Account extends Element {
     private Institution institution;
     private String accountNumber;
 
+    private boolean closed;
+
     /**
      * Creates an account.
      *
@@ -29,6 +31,7 @@ public class Account extends Element {
         super(id, name);
         subAccounts = new ArrayList<>();
         transactions = new ArrayList<>();
+        closed = false;
     }
 
     /**
@@ -101,6 +104,22 @@ public class Account extends Element {
         }
         this.institution = institution;
         institution.addAccount(this);
+    }
+
+    /**
+     * Tells whether or not the account is closed
+     * @return closed
+     */
+    public boolean isClosed() {
+        return closed;
+    }
+
+    /**
+     * Set whether or not the account is closed
+     * @param closed
+     */
+    public void setClosed(boolean closed) {
+        this.closed = closed;
     }
 
     /**

@@ -39,13 +39,13 @@ public class JSONExporter {
 
         // Bank Accounts
         appendName(json, "bankAccounts").append(":{");
-        repository.getBankAccounts().stream().forEach(a -> appendAccount(json, a));
+        repository.getBankAccounts().stream().forEach(a -> appendAccount(json, a, true));
         removeLastComma(json);
         json.append("},");
 
         // Categories
         appendName(json, "categories").append(":{");
-        repository.getCategories().stream().forEach(a -> appendAccount(json, a));
+        repository.getCategories().stream().forEach(a -> appendAccount(json, a, false));
         removeLastComma(json);
         json.append("},");
 
@@ -72,12 +72,16 @@ public class JSONExporter {
         appendName(json, element.getName()).append("},");
     }
 
-    private static void appendAccount(StringBuilder json, Account account) {
+    private static void appendAccount(StringBuilder json, Account account, boolean isBankAccount) {
         appendName(json, account.getId()).append(":{");
         appendName(json, "id").append(":");
         appendName(json, account.getId()).append(",");
         appendName(json, "name").append(":");
         appendName(json, account.getName()).append(",");
+        if (isBankAccount) {
+            appendName(json, "closed").append(":");
+            appendName(json, account.isClosed() + "").append(",");
+        }
         account.getAccountNumber().ifPresent(n -> {
             appendName(json, "accountNumber").append(":");
             appendName(json, n).append(",");

@@ -75,6 +75,9 @@ public class KMyMoneyReaderTest {
     @Test
     public void should_read_bank_accounts() throws Exception {
         assertThat(repository.getBankAccounts().size()).isEqualTo(2);
+
+        assertThat(repository.findBankAccount("A000001").get().isClosed()).isFalse();
+        assertThat(repository.findBankAccount("A000003").get().isClosed()).isTrue();
     }
 
     @Test

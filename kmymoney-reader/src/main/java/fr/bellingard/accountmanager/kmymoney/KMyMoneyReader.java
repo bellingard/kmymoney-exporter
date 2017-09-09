@@ -104,14 +104,18 @@ public class KMyMoneyReader {
             String institutionId = accountElement.getAttribute("institution");
             Optional<Institution> institution = repository.findInstitution(institutionId);
             if (type.equals("1") || type.equals("2")) {
+                // this is a bank account
                 if (!institution.isPresent()) {
-                    throw new XPathExpressionException("Account of type 1 or 2 does not have an institution: "
+                    throw new XPathExpressionException("This account is of type 1 or 2 but does not have an institution: "
                             + id + " - " + name);
                 }
-                // this is a bank account
                 repository.addBankAccount(account);
                 account.setInstitution(institution.get());
                 account.setAccountNumber(accountElement.getAttribute("number").trim());
+                NodeList metadata = getXPathResults(accountElement, "KEYVALUEPAIRS/PAIR[@key=\"mm-closed\"]");
+                if (metadata.getLength() > 0) {
+                    account.setClosed(true);
+                }
             } else {
                 // this is a category
                 repository.addCategory(account);
