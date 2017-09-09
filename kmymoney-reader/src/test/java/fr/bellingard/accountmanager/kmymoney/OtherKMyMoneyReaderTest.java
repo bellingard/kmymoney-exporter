@@ -61,7 +61,7 @@ public class OtherKMyMoneyReaderTest {
             throw new Exception("File already exists, won't dump JSON content into it.");
         }
 
-        String jsonContent = JSONExporter.export(repository);
+        String jsonContent = JSONExporter.lightExport(repository);
         Files.write(file, jsonContent.getBytes());
 
         //System.out.println("");

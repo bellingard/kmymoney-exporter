@@ -113,7 +113,7 @@ public class KMyMoneyReaderTest {
     }
 
     private static void dumpStructure(Repository repository) {
-        print(JSONExporter.export(repository));
+        print(JSONExporter.fullExport(repository));
     }
 
     private static void dumpBankAccountBalance(Repository repository) {

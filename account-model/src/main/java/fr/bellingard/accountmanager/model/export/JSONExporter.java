@@ -20,7 +20,30 @@ public class JSONExporter {
      * @param repository the repository to serialize
      * @return the JSON representation
      */
-    public static String export(Repository repository) {
+    public static String fullExport(Repository repository) {
+
+        return export(repository, true);
+    }
+
+    /**
+     * Returns a JSON string representing the repository, but does not lists the
+     * transactions under each bank account
+     *
+     * @param repository the repository to serialize
+     * @return the JSON representation
+     */
+    public static String lightExport(Repository repository) {
+
+        return export(repository, false);
+    }
+
+    /**
+     * Returns a JSON string representing the repository
+     *
+     * @param repository the repository to serialize
+     * @return the JSON representation
+     */
+    private static String export(Repository repository, boolean withTransactionListing) {
         StringBuilder json = new StringBuilder();
 
         json.append("{");
@@ -39,13 +62,13 @@ public class JSONExporter {
 
         // Bank Accounts
         appendName(json, "bankAccounts").append(":{");
-        repository.getBankAccounts().stream().forEach(a -> appendAccount(json, a, true));
+        repository.getBankAccounts().stream().forEach(a -> appendAccount(json, a, true, withTransactionListing));
         removeLastComma(json);
         json.append("},");
 
         // Categories
         appendName(json, "categories").append(":{");
-        repository.getCategories().stream().forEach(a -> appendAccount(json, a, false));
+        repository.getCategories().stream().forEach(a -> appendAccount(json, a, false, withTransactionListing));
         removeLastComma(json);
         json.append("},");
 
@@ -72,7 +95,7 @@ public class JSONExporter {
         appendName(json, element.getName()).append("},");
     }
 
-    private static void appendAccount(StringBuilder json, Account account, boolean isBankAccount) {
+    private static void appendAccount(StringBuilder json, Account account, boolean isBankAccount, boolean withTransactionListing) {
         appendName(json, account.getId()).append(":{");
         appendName(json, "id").append(":");
         appendName(json, account.getId()).append(",");
@@ -94,13 +117,15 @@ public class JSONExporter {
             appendName(json, "parentId").append(":");
             appendName(json, p.getId()).append(",");
         });
-        account.listTransactions().stream()
-                .map(t -> "\"" + t.getId() + "\"")
-                .reduce((a, b) -> a + "," + b)
-                .ifPresent(list -> {
-                    appendName(json, "transactionIds").append(":[");
-                    json.append(list).append("],");
-                });
+        if (withTransactionListing) {
+            account.listTransactions().stream()
+                    .map(t -> "\"" + t.getId() + "\"")
+                    .reduce((a, b) -> a + "," + b)
+                    .ifPresent(list -> {
+                        appendName(json, "transactionIds").append(":[");
+                        json.append(list).append("],");
+                    });
+        }
         account.listSubAccount().stream()
                 .map(a -> "\"" + a.getId() + "\"")
                 .reduce((a, b) -> a + "," + b)

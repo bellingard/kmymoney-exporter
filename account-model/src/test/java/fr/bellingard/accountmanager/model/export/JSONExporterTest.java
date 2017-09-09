@@ -52,8 +52,11 @@ public class JSONExporterTest {
         new Transaction("T2", bankAccount2, cat1, "2015-01_01", 5678L).setDescription("Yoohooo");
         new Transaction("T3", bankAccount2, bankAccount1, "2015-01_01", 10L).setDescription("2\n lines");
 
-        assertThat(new File(ClassLoader.getSystemResource("export.json").toURI())).hasContent(JSONExporter.export(repository));
+        // Test full export
+        assertThat(new File(ClassLoader.getSystemResource("export-full.json").toURI())).hasContent(JSONExporter.fullExport(repository));
 
+        // Test light export
+        assertThat(new File(ClassLoader.getSystemResource("export-light.json").toURI())).hasContent(JSONExporter.lightExport(repository));
     }
 
 }
