@@ -35,7 +35,7 @@ public class OtherKMyMoneyReaderTest {
 
     @Test
     public void should_read_payees() throws Exception {
-        assertThat(repository.getPayees().size()).isEqualTo(560);
+        assertThat(repository.getPayees().size()).isEqualTo(573);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class OtherKMyMoneyReaderTest {
                 .mapToInt(a -> a.listTransactions().size())
                 .sum();
 
-        assertThat(numberOfBankTransactions + numberOfCategoryTransactions).isEqualTo(5829 * 2);
+        assertThat(numberOfBankTransactions + numberOfCategoryTransactions).isEqualTo(11844);
     }
 
     private static void dumpStructure(Repository repository) throws Exception {
