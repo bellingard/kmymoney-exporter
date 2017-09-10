@@ -112,9 +112,13 @@ public class KMyMoneyReader {
                 repository.addBankAccount(account);
                 account.setInstitution(institution.get());
                 account.setAccountNumber(accountElement.getAttribute("number").trim());
-                NodeList metadata = getXPathResults(accountElement, "KEYVALUEPAIRS/PAIR[@key=\"mm-closed\"]");
-                if (metadata.getLength() > 0) {
+                NodeList closedAttribute = getXPathResults(accountElement, "KEYVALUEPAIRS/PAIR[@key=\"mm-closed\"]");
+                if (closedAttribute.getLength() > 0) {
                     account.setClosed(true);
+                }
+                NodeList favoriteAttribute = getXPathResults(accountElement, "KEYVALUEPAIRS/PAIR[@key=\"PreferredAccount\"]");
+                if (favoriteAttribute.getLength() > 0) {
+                    account.setFavorite(true);
                 }
             } else {
                 // this is a category

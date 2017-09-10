@@ -20,6 +20,7 @@ public class Account extends Element {
     private String accountNumber;
 
     private boolean closed;
+    private boolean favorite;
 
     /**
      * Creates an account.
@@ -32,6 +33,7 @@ public class Account extends Element {
         subAccounts = new ArrayList<>();
         transactions = new ArrayList<>();
         closed = false;
+        favorite = false;
     }
 
     /**
@@ -115,11 +117,27 @@ public class Account extends Element {
     }
 
     /**
-     * Set whether or not the account is closed
+     * Sets whether or not the account is closed
      * @param closed
      */
     public void setClosed(boolean closed) {
         this.closed = closed;
+    }
+
+    /**
+     * Tells whether or not the account is a favorite one
+     * @return favorite
+     */
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    /**
+     * Sets whether or not the account is a favorite one
+     * @param favorite
+     */
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     /**

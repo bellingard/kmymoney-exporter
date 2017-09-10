@@ -103,6 +103,7 @@ public class JSONExporter {
         appendName(json, account.getName()).append(",");
         if (isBankAccount) {
             appendName(json, "closed").append(":").append(Boolean.toString(account.isClosed())).append(",");
+            appendName(json, "favorite").append(":").append(Boolean.toString(account.isFavorite())).append(",");
         }
         account.getAccountNumber().ifPresent(n -> {
             appendName(json, "accountNumber").append(":");

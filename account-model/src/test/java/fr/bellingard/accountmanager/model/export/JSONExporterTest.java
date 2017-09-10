@@ -40,6 +40,7 @@ public class JSONExporterTest {
         bankAccount2.setInstitution(i2);
         bankAccount2.setAccountNumber("67890");
         bankAccount2.setParent(allBankAccounts);
+        bankAccount2.setFavorite(true);
         repository.addBankAccount(bankAccount2);
 
         Account cat1 = new Account("CAT1", "Category 1");

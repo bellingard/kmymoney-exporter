@@ -78,6 +78,9 @@ public class KMyMoneyReaderTest {
 
         assertThat(repository.findBankAccount("A000001").get().isClosed()).isFalse();
         assertThat(repository.findBankAccount("A000003").get().isClosed()).isTrue();
+
+        assertThat(repository.findBankAccount("A000001").get().isFavorite()).isTrue();
+        assertThat(repository.findBankAccount("A000003").get().isFavorite()).isTrue();
     }
 
     @Test
