@@ -88,17 +88,17 @@ public class JSONExporter {
     }
 
     private static void appendInstitutionOrPayee(StringBuilder json, Element element) {
-        appendName(json, element.getId()).append(":{");
+        appendId(json, element.getId()).append(":{");
         appendName(json, "id").append(":");
-        appendName(json, element.getId()).append(",");
+        appendId(json, element.getId()).append(",");
         appendName(json, "name").append(":");
         appendName(json, element.getName()).append("},");
     }
 
     private static void appendAccount(StringBuilder json, Account account, boolean isBankAccount, boolean withTransactionListing) {
-        appendName(json, account.getId()).append(":{");
+        appendId(json, account.getId()).append(":{");
         appendName(json, "id").append(":");
-        appendName(json, account.getId()).append(",");
+        appendId(json, account.getId()).append(",");
         appendName(json, "name").append(":");
         appendName(json, account.getName()).append(",");
         if (isBankAccount) {
@@ -111,15 +111,15 @@ public class JSONExporter {
         });
         account.getInstitution().ifPresent(i -> {
             appendName(json, "institutionId").append(":");
-            appendName(json, i.getId()).append(",");
+            appendId(json, i.getId()).append(",");
         });
         account.getParent().ifPresent(p -> {
             appendName(json, "parentId").append(":");
-            appendName(json, p.getId()).append(",");
+            appendId(json, p.getId()).append(",");
         });
         if (withTransactionListing) {
             account.listTransactions().stream()
-                    .map(t -> "\"" + t.getId() + "\"")
+                    .map(t -> removeZeros(t.getId()))
                     .reduce((a, b) -> a + "," + b)
                     .ifPresent(list -> {
                         appendName(json, "transactionIds").append(":[");
@@ -127,7 +127,7 @@ public class JSONExporter {
                     });
         }
         account.listSubAccount().stream()
-                .map(a -> "\"" + a.getId() + "\"")
+                .map(a -> removeZeros(a.getId()))
                 .reduce((a, b) -> a + "," + b)
                 .ifPresent(list -> {
                     appendName(json, "subAccountIds").append(":[");
@@ -140,19 +140,19 @@ public class JSONExporter {
     }
 
     private static void appendTransaction(StringBuilder json, Transaction transaction) {
-        appendName(json, transaction.getId()).append(":{");
+        appendId(json, transaction.getId()).append(":{");
         appendName(json, "id").append(":");
-        appendName(json, transaction.getId()).append(",");
+        appendId(json, transaction.getId()).append(",");
         appendName(json, "date").append(":");
         appendName(json, transaction.getDate()).append(",");
         appendName(json, "amount").append(":").append(transaction.getAmount()).append(",");
         appendName(json, "toId").append(":");
-        appendName(json, transaction.getToAccount().getId()).append(",");
+        appendId(json, transaction.getToAccount().getId()).append(",");
         appendName(json, "fromId").append(":");
-        appendName(json, transaction.getFromAccount().getId()).append(",");
+        appendId(json, transaction.getFromAccount().getId()).append(",");
         transaction.getPayee().ifPresent(p -> {
             appendName(json, "payeeId").append(":");
-            appendName(json, p.getId()).append(",");
+            appendId(json, p.getId()).append(",");
         });
         appendName(json, "desc").append(":");
         appendName(json, transaction.getDescription().orElse("").replace("\n", " - "));
@@ -167,6 +167,29 @@ public class JSONExporter {
 
     private static StringBuilder appendName(StringBuilder builder, String s) {
         return builder.append("\"").append(s).append("\"");
+    }
+
+    private static StringBuilder appendId(StringBuilder builder, String s) {
+        builder.append("\"");
+        // let's remove all the zeros between the first character and the real count
+        builder.append(s.charAt(0));
+        char[] chars = s.toCharArray();
+        boolean nonZeroFound = false;
+        for (int i=1; i < chars.length; i++) {
+            char c = chars[i];
+            if (c != '0') {
+                nonZeroFound = true;
+            }
+            if (nonZeroFound) {
+                builder.append(c);
+            }
+        }
+        return builder.append("\"");
+    }
+
+    private static String removeZeros(String s) {
+        StringBuilder builder = new StringBuilder();
+        return appendId(builder, s).toString();
     }
 
 }
