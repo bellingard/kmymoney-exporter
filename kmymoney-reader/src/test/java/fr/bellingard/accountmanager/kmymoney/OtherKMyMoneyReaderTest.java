@@ -35,7 +35,7 @@ public class OtherKMyMoneyReaderTest {
 
     @Test
     public void should_read_payees() throws Exception {
-        assertThat(repository.getPayees().size()).isEqualTo(573);
+        assertThat(repository.getPayees().size()).isEqualTo(583);
     }
 
     @Test
@@ -52,16 +52,16 @@ public class OtherKMyMoneyReaderTest {
                 .mapToInt(a -> a.listTransactions().size())
                 .sum();
 
-        assertThat(numberOfBankTransactions + numberOfCategoryTransactions).isEqualTo(11844);
+        assertThat(numberOfBankTransactions + numberOfCategoryTransactions).isEqualTo(12154);
     }
 
     private static void dumpStructure(Repository repository) throws Exception {
+        String jsonContent = JSONExporter.lightExport(repository);
+
         Path file = Paths.get("/Users/bellingard/Repos/_PERSO_/_resources_/some-tests/Comptes.json");
         if (file.toFile().exists()) {
             throw new Exception("File already exists, won't dump JSON content into it.");
         }
-
-        String jsonContent = JSONExporter.lightExport(repository);
         Files.write(file, jsonContent.getBytes());
 
         //System.out.println("");

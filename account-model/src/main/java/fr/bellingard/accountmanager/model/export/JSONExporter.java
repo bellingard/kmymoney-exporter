@@ -5,10 +5,15 @@ import fr.bellingard.accountmanager.model.Element;
 import fr.bellingard.accountmanager.model.Repository;
 import fr.bellingard.accountmanager.model.Transaction;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Exports a Repository into a JSON representation
  */
 public class JSONExporter {
+
+    private static Set<Account> foundCategories = new HashSet<>();
 
     private JSONExporter() {
         // private constructor for utility class
@@ -44,6 +49,8 @@ public class JSONExporter {
      * @return the JSON representation
      */
     private static String export(Repository repository, boolean withTransactionListing) {
+        extractKnownCategories(repository);
+
         StringBuilder json = new StringBuilder();
 
         json.append("{");
@@ -87,6 +94,18 @@ public class JSONExporter {
         return json.toString();
     }
 
+    private static void extractKnownCategories(Repository repository) {
+        repository.getBankAccounts().stream()
+                .flatMap(a -> a.listTransactions().stream())
+                .distinct()
+                .forEach(t -> referenceCategories(t.getFromAccount(), t.getToAccount()));
+    }
+
+    private static void referenceCategories(Account fromAccount, Account toAccount) {
+        foundCategories.add(fromAccount);
+        foundCategories.add(toAccount);
+    }
+
     private static void appendInstitutionOrPayee(StringBuilder json, Element element) {
         appendId(json, element.getId()).append(":{");
         appendName(json, "id").append(":");
@@ -96,6 +115,11 @@ public class JSONExporter {
     }
 
     private static void appendAccount(StringBuilder json, Account account, boolean isBankAccount, boolean withTransactionListing) {
+        if (account.listSubAccount().isEmpty() && !foundCategories.contains(account)) {
+            // Following account not found in any transaction - ignoring it in the export
+            return;
+        }
+
         appendId(json, account.getId()).append(":{");
         appendName(json, "id").append(":");
         appendId(json, account.getId()).append(",");
@@ -175,7 +199,7 @@ public class JSONExporter {
         builder.append(s.charAt(0));
         char[] chars = s.toCharArray();
         boolean nonZeroFound = false;
-        for (int i=1; i < chars.length; i++) {
+        for (int i = 1; i < chars.length; i++) {
             char c = chars[i];
             if (c != '0') {
                 nonZeroFound = true;
